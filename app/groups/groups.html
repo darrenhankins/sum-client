@@ -1,1 +1,9 @@
-<h1>Groups List Page</h1>
+<h2>Groups</h2>
+<div ng-repeat="group in $ctrl.groups">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ group.name }}
+            <a href="#" class="btn btn-primary right" role="button">edit</a>
+        </div>
+    </div>
+</div>

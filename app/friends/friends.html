@@ -1,1 +1,24 @@
-<h1>Friends List Page</h1>
+<h2>Friends</h2>
+<div ng-repeat="friend in $ctrl.friends">
+    <!-- <div class="panel panel-default">
+        <div class="panel-body">
+            <div>{{ friend.name }}</div>
+            <div><a href="#" class="btn btn-primary right" role="button">edit</a></div>
+            <div class="panel panel-default right">
+              <div>{{ friend.email }}</div>
+          </div>
+        </div>
+    </div>
+    <div class="well well-lg">{{ friend.name }}
+      <div class="">{{ friend.email }}
+    <a href="#" class="btn btn-primary bottom-right" role="button">edit</a>
+</div> -->
+<div class="panel panel-default">
+    <div class="panel-body">
+        {{ friend.name }}
+        <br>
+        Email: <span class="bootstrap-color-primary">{{ friend.email }}</span>
+        <a href="#" class="btn btn-primary bottom-right" role="button">edit</a>
+    </div>
+</div>
+</div>

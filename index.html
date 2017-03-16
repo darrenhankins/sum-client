@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="sumApp">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <base href="/">
-  </head>
-  <body>
+</head>
+<!-- <body ng-controller="MainCtrl"> -->
+<body>
+    <nav class="navbar navbar-default transparent navbar-static-top" role="navigation" id="navbar-main">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navCollapse">
+                  <span class="sr-only">Toggle Navigation</span>
+                  <span class="fa fa-chevron-down"></span> <b>Menu</b>
+              </button>
+                <a class="navbar-brand" href="#">SUM (Share U, M)</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navCollapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/profile/items">Items</a></li>
+                    <li><a href="/profile/friends">Friends</a></li>
+                    <li><a href="/profile/groups">Groups</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <ui-view></ui-view>
+
+
+
+    <main class="container">
+        <ui-view></ui-view>
+    </main>
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/v2.3.8/angular-strap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/v2.3.8/angular-strap.tpl.min.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-beta.3/angular-ui-router.js" charset="utf-8"></script>
@@ -40,5 +71,6 @@
     <!--  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </body>
+</body>
+
 </html>
