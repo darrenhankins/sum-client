@@ -19,6 +19,7 @@
                     "image_url": "http://hlsb.com/Images/Rockies/tickets.png",
                     "free": false,
                     "available": true,
+                    "emailed": false,
                     "uuid": "7a955f98-2619-40c7-95c9-1a64a3e06742"
                 },
                 {
@@ -29,6 +30,7 @@
                     "image_url": "http://c.shld.net/rpx/i/s/i/spin/10042637/prod_1914099412?hei=245&wid=245&op_sharpen=1&qlt=85",
                     "free": true,
                     "available": false,
+                    "emailed": true,
                     "uuid": "7a955f98-2619-40c7-95c9-1a64a3e06742"
                 },
                 {
@@ -39,6 +41,7 @@
                     "image_url": "http://images.indexusedcars.com/Jeep/CJ7/1985/0b1f8cfc-d681-4ce6-ad0d-3ce5069bfd36/Jeep_CJ7_1985.jpeg",
                     "free": false,
                     "available": true,
+                    "emailed": true,
                     "uuid": "7a955f98-2619-40c7-95c9-1a64a3e06742"
                 },
                 {
@@ -49,27 +52,30 @@
                     "image_url": "http://i1.ebayimg.com/thumbs/images/g/IO8AAMXQUmFSn9j6/s-l225.jpg",
                     "free": true,
                     "available": true,
+                    "emailed": false,
                     "uuid": "7a955f98-2619-40c7-95c9-1a64a3e06742"
                 },
                 {
-                    "id": 7,
+                    "id": 3,
                     "user_id": 1,
-                    "name": "Ticket for FREE",
-                    "description": "Broncos Tickets - End Zone",
-                    "image_url": "http://i1.ebayimg.com/thumbs/images/g/IO8AAMXQUmFSn9j6/s-l225.jpg",
-                    "free": true,
+                    "name": "Jeep",
+                    "description": "1985 Green Jeep, 4x4",
+                    "image_url": "http://images.indexusedcars.com/Jeep/CJ7/1985/0b1f8cfc-d681-4ce6-ad0d-3ce5069bfd36/Jeep_CJ7_1985.jpeg",
+                    "free": false,
                     "available": true,
+                    "emailed": true,
                     "uuid": "7a955f98-2619-40c7-95c9-1a64a3e06742"
                 },
                 {
-                    "id": 9,
+                    "id": 3,
                     "user_id": 1,
-                    "name": "Ticket for FREE",
-                    "description": "Broncos Tickets - End Zone",
-                    "image_url": "http://i1.ebayimg.com/thumbs/images/g/IO8AAMXQUmFSn9j6/s-l225.jpg",
-                    "free": true,
+                    "name": "Jeep",
+                    "description": "1985 Green Jeep, 4x4",
+                    "image_url": "http://images.indexusedcars.com/Jeep/CJ7/1985/0b1f8cfc-d681-4ce6-ad0d-3ce5069bfd36/Jeep_CJ7_1985.jpeg",
+                    "free": false,
                     "available": true,
-                    "uuid": "2509fb8f-8643-49a7-a738-3532c199c48c"
+                    "emailed": false,
+                    "uuid": "7a955f98-2619-40c7-95c9-1a64a3e06742"
                 }
             ];
         }

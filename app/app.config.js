@@ -28,6 +28,9 @@
       .state({
         name: 'items',
         component: 'items',
+        params: {
+          dog: "Fred"
+        },
         url: '/profile/items'
       })
       .state({

@@ -1,1 +1,8 @@
-# Sum Client
+# Sum App - Client
+
+### Firebase Deploy
+---
+```
+$ firebase deploy
+
+```

@@ -3,6 +3,9 @@
   border-width: 1px;
   border-color: lightgrey;*/
 }
+.padding {
+  padding: 0px 20px 20px 20px;
+}
 .description {
   border-style: solid;
   border-width: 1px;
@@ -11,7 +14,8 @@
 }
 .bottom-right{
   float:right;
-  margin-top: -20px;
+  margin-top: -5px;
+  /*margin-bottom: 20px;*/
   /*margin: 0px 0px 0px 0px;*/
 }
 .right{
@@ -24,7 +28,8 @@
   display: inline-block !important
 }
 .thumbnail img {
-  max-height:150px;
+  max-height:125px;
+  /*max-width:200px;*/
   /*height:150px;*/
 }
 .thumbnail {
@@ -36,4 +41,24 @@
 }
 .bootstrap-color-primary {
   color: #337ab7;
+}
+.btn-primary-emailed {
+    color: #2e6da4;
+    background-color: #FFF;
+    border-color: #2e6da4!important;
+}
+.btn-primary-emailed:hover {
+    color: #fff!important;
+    background-color: #286090;
+    border-color: #204d74;
+}
+.btn-primary-unemailed {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn-primary-unemailed:hover {
+    color: #fff!important;
+    background-color: #286090;
+    border-color: #204d74;
 }

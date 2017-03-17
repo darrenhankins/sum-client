@@ -28,15 +28,16 @@
                 <img src="{{ item.image_url }}" alt="..." height="150px">
                 <div class="caption">
                     <h3>{{ item.name }}</h3>
+                    {{ dog }}
                     <p>{{ item.description }}</p>
                     <div class="bottom-right box">
-                    <div class="label label-primary" ng-if="item.free">Free</div>
+                    <div class="label label-success" ng-if="item.free">Free</div>
                     <div class="label label-success" ng-if="!item.free">$$$</div>
                     <br>
                     <div class="label label-success" ng-if="item.available">Available</div>
                     <div class="label label-danger" ng-if="!item.available">Claimed</div>
                   </div>
-                    <p><a href="#" class="btn btn-primary" role="button">edit</a> <a href="#" class="btn btn-default" role="button">Resend Email</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">edit</a> <a href="#" class="btn btn-primary-unemailed" role="button" ng-if="!item.emailed">Send Email</a><a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.emailed">Resend Email</a></p>
                 </div>
             </div>
         </div>
