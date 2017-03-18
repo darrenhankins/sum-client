@@ -31,8 +31,17 @@
           "email": "george@gmail.com"
         }
       ]
-
       };
+     vm.friendEdit = [];
+      vm.editFriendInfo = function (id){
+        if (vm.friendEdit[id] == false || !vm.friendEdit[id]){
+          console.log(vm.friendEdit[id]);
+          vm.friendEdit[id] = true;
+        } else {
+          console.log(vm.friendEdit[id]);
+          vm.friendEdit[id]= false;
+        }
+      }
     }
 
 })();

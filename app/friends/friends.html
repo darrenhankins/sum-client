@@ -15,10 +15,37 @@
 </div> -->
 <div class="panel panel-default">
     <div class="panel-body">
+      <div class="friend-padding">
+
         {{ friend.name }}
+        <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)"></span>
+
         <br>
         Email: <span class="bootstrap-color-primary">{{ friend.email }}</span>
-        <a href="#" class="btn btn-primary bottom-right" role="button">edit</a>
+        </div>
+
+    <!-- <div class="panel-body"> -->
+
+    <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]">
+    <div class="form-group">
+        <!-- <label for="inputName">Name</label> -->
+        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name">
+        <small id="emailHelp" class="form-text text-muted"></small>
     </div>
+      <div class="form-group">
+          <!-- <label for="inputEmail">Email address</label> -->
+          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
+          <small id="emailHelp" class="form-text text-muted"></small>
+      </div>
+    </div>
+    <div class="">
+
+    <a href="#" class="btn btn-danger bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Cancel</a>
+    <a href="#" class="btn btn-success bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Save</a>
+    <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
+  </div>
+      </div>
 </div>
+<!-- </div> -->
+
 </div>

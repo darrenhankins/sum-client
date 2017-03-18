@@ -2,31 +2,36 @@
 <div ng-repeat="group in $ctrl.groups">
     <div class="panel panel-default">
         <div class="panel-body">
+          <div>
             {{ group.name }}
-            <a href="#" ng-click="$ctrl.showDropdown()" class="btn btn-primary right" role="button">Edit</a>
-            <a href="#" ng-click="$ctrl.showDropdown()" class="btn btn-danger right" role="button">Cancel</a>
-            <a href="#" ng-click="$ctrl.showDropdown()" class="btn btn-success right" role="button">Save</a>
+            <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)"></span>
+            </div>
+            <!-- Dropdown checkboxes -->
+            <div class="row padding" ng-show="$ctrl.groupEdit[group.id]">
+                <div ng-repeat="friend in group.friends">
 
-        </div>
-        <!-- Dropdown checkboxes -->
-        <div class="row padding" ng-show="$ctrl.showDropdownVal">
-            <div ng-repeat="friend in group.friends">
-
-            <div class="col-xs-6 col-sm-3">
-                <div class="checkbox">
-                    <label ng-if="friend.checked" ><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label>
-                    <label ng-if="!friend.checked"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="checkbox">
+                        <label ng-if="$ctrl.groupEdit[group.id]" ><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label>
+                        <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label>
+                    </div>
+                    <!-- <div class="input-group">
+                        <span class="input-group-addon"><input type="checkbox" aria-label="...">Test</span>
+                        <input type="text" class="form-control" aria-label="...">
+                    </div> -->
+                    <!-- /input-group -->
                 </div>
-                <!-- <div class="input-group">
-                    <span class="input-group-addon"><input type="checkbox" aria-label="...">Test</span>
-                    <input type="text" class="form-control" aria-label="...">
-                </div> -->
-                <!-- /input-group -->
+                </div>
             </div>
-            </div>
+            <!-- <a href="#" ng-if="!$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-primary right" role="button">Edit</a> -->
+            <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-danger right" role="button">Cancel</a>
+            <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-success right" role="button">Save</a>
+
+            <!-- /.row -->
+            <!-- Dropdown checkboxes -->
+
         </div>
-        <!-- /.row -->
-        <!-- Dropdown checkboxes -->
+
     </div>
 
 </div>

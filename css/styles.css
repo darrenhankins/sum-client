@@ -4,7 +4,7 @@
   border-color: lightgrey;*/
 }
 .padding {
-  padding: 0px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
 }
 .description {
   border-style: solid;
@@ -14,7 +14,7 @@
 }
 .bottom-right{
   float:right;
-  margin-top: -5px;
+  margin-top: 0px;
   /*margin-bottom: 20px;*/
   /*margin: 0px 0px 0px 0px;*/
 }
@@ -28,12 +28,16 @@
   display: inline-block !important
 }
 .thumbnail img {
-  max-height:125px;
+  max-height:120px;
   /*max-width:200px;*/
   /*height:150px;*/
 }
 .thumbnail {
   border-width: 2px!important;
+}
+.thumbnail-large {
+  border-width: 2px!important;
+  min-height: 600px;
 }
 .panel-body {
   font-weight: bold;
@@ -61,4 +65,18 @@
     color: #fff!important;
     background-color: #286090;
     border-color: #204d74;
+}
+.btn {
+  margin: 5px 2px!important;
+  padding: 6px 6px!important;
+}
+.panel-body {
+    background-color: #F8F8FF;
+}
+.friend-padding {
+  padding-left: 0px!important;
+  /*padding-bottom: 15px!important;*/
+}
+.friend-dropdown {
+  padding-top: 20px;
 }

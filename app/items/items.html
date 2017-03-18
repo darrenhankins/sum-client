@@ -1,4 +1,4 @@
-<h2>Your Items</h2>
+<h2>Your Items: Darren</h2>
 
 <div ng-repeat="item in $ctrl.items">
     <!-- <div class="row">
@@ -23,7 +23,9 @@
         </div>
     </div> -->
     <!-- <div class="row"> -->
-        <div class="col-sm-6 col-md-4">
+    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+        <div class="col-sm-6 col-md-4" ng-if="!$ctrl.itemEdit[item.id]">
             <div class="thumbnail">
                 <img src="{{ item.image_url }}" alt="..." height="150px">
                 <div class="caption">
@@ -37,9 +39,65 @@
                     <div class="label label-success" ng-if="item.available">Available</div>
                     <div class="label label-danger" ng-if="!item.available">Claimed</div>
                   </div>
-                    <p><a href="#" class="btn btn-primary" role="button">edit</a> <a href="#" class="btn btn-primary-unemailed" role="button" ng-if="!item.emailed">Send Email</a><a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.emailed">Resend Email</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.setItemId(item.id)">Edit</a>
+                      <a href="#" class="btn btn-primary-unemailed" role="button" ng-if="!item.emailed">Send Email</a>
+                      <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.emailed">Resend Email</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" ng-if="$ctrl.itemEdit[item.id]">
+            <div class="thumbnail">
+                <img src="{{ item.image_url }}" alt="..." height="150px">
+                <div class="caption">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                    <div class="bottom-right box">
+                    <div class="label label-success" ng-if="item.free">Free</div>
+                    <div class="label label-success" ng-if="!item.free">$$$</div>
+                    <br>
+                    <div class="label label-success" ng-if="item.available">Available</div>
+                    <div class="label label-danger" ng-if="!item.available">Claimed</div>
+                  </div>
+                    <p><a href="#" class="btn btn-primary" role="button" ng-click="$ctrl.editItemInfo(item.id)">save</a>
+                    <a href="#" class="btn btn-primary-unemailed" role="button" ng-if="!item.emailed">Send Email</a>
+                    <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.emailed">Resend Email</a></p>
                 </div>
             </div>
         </div>
     <!-- </div> -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{ $ctrl.items[$ctrl.itemId-1].name }}</h4>
+          </div>
+          <div class="modal-body">
+            <div class="col-sm-12">
+                <div class="thumbnail">
+                    <img src="{{ $ctrl.items[$ctrl.itemId-1].image_url }}" alt="..." height="150px">
+                    <div class="caption">
+                        <p>{{ $ctrl.items[$ctrl.itemId-1].description }}</p>
+                        <div class="bottom-right box">
+                        <!-- <div class="label label-success" ng-if="$ctrl.items[$ctrl.itemId-1].free">Free</div> -->
+                        <!-- <div class="label label-success" ng-if="!$ctrl.items[$ctrl.itemId-1].free">$$$</div> -->
+                        <br>
+                        <!-- <div class="label label-success" ng-if="$ctrl.items[$ctrl.itemId-1].available">Available</div> -->
+                        <!-- <div class="label label-danger" ng-if="!$ctrl.items[$ctrl.itemId-1].available">Claimed</div> -->
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
 </div>

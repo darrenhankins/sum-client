@@ -100,17 +100,29 @@
 
 
 
-        vm.showDropdown = function () {
-          if (!vm.showDropdownVal) {
-            vm.groups = vm.temporyArray;
-            console.log(vm.groups);
-            console.log(vm.temporyArray);
-            vm.showDropdownVal = true;
-            console.log("test");
-          } else {
-            vm.showDropdownVal = false;
-          }
-        }
+        // vm.showDropdown = function () {
+        //   if (!vm.showDropdownVal) {
+        //     vm.groups = vm.temporyArray;
+        //     console.log(vm.groups);
+        //     console.log(vm.temporyArray);
+        //     vm.showDropdownVal = true;
+        //     console.log("test");
+        //   } else {
+        //     vm.showDropdownVal = false;
+        //   }
+        // }
+
+
+        vm.groupEdit = [];
+         vm.editGroupInfo = function (id){
+           if (vm.groupEdit[id] == false || !vm.groupEdit[id]){
+             console.log(vm.groupEdit[id]);
+             vm.groupEdit[id] = true;
+           } else {
+             console.log(vm.groupEdit[id]);
+             vm.groupEdit[id]= false;
+           }
+         }
 
 
     }
