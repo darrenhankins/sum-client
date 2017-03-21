@@ -21,6 +21,12 @@
         url: '/signup'
       })
       .state({
+        name: 'claim',
+        component: 'claim',
+        // url: '/claim'
+        url: '/claim/item/:item_id/friend/:friend_id/uuid/:uuid'
+      })
+      .state({
         name: 'profile',
         component: 'profile',
         url: '/profile'

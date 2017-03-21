@@ -5,11 +5,21 @@
         .module('sumApp')
         .controller('ItemsController', ItemsController);
 
-    function ItemsController() {
+    function ItemsController($scope, $http) {
         console.log("This is the ItemsController...");
         const vm = this;
 
+        // $scope.complete = function(content) {
+        //   console.log(content); // process content
+        // }
+
         vm.$onInit = function() {
+
+          $http.get('http://localhost:3000/user/1/items')
+          .then(function (response) {
+            vm.things = response.data;
+            console.log(response.data);
+          })
 
             vm.items = [{
                     "id": 1,
