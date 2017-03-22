@@ -1,4 +1,24 @@
-<h2>Groups</h2>
+
+<div class="panel-body-groups">
+  <h2>Groups</h2>
+<span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.groupEditDropdown" ng-click="$ctrl.editGroup()"></span></div>
+<!-- <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]"> -->
+<div class="group-dropdown" ng-show="$ctrl.groupEditDropdown">
+
+<div class="form-group">
+    <!-- <label for="inputName">Name</label> -->
+    <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name">
+    <small id="emailHelp" class="form-text text-muted"></small>
+</div>
+
+<div class="">
+
+<a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editGroup()">Cancel</a>
+<a href="#" class="btn btn-success bottom-right" role="button" ng-click="">Save</a>
+<!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
+</div>
+</div>
+
 <div ng-repeat="group in $ctrl.groups">
     <div class="panel panel-default">
         <div class="panel-body">

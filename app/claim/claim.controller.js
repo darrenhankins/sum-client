@@ -5,7 +5,7 @@
     .module('sumApp')
     .controller('ClaimController', ClaimController);
 
-  function ClaimController($scope, $stateParams){
+  function ClaimController($scope, $http, $stateParams){
     console.log("This is the ClaimController...");
     const vm = this;
 

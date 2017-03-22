@@ -5,7 +5,7 @@
     .module('sumApp')
     .controller('ProfileController', ProfileController);
 
-    function ProfileController(){
+    function ProfileController($scope, $http){
       console.log("This is the ProfileController...");
     }
 

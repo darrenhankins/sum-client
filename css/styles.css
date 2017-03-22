@@ -18,6 +18,13 @@
   /*margin-bottom: 20px;*/
   /*margin: 0px 0px 0px 0px;*/
 }
+.bottom-right-groups {
+  float:right;
+  margin-top: -35px;
+  margin-right: 15px;
+  font-weight: bold;
+  font-size: 1.3em;
+}
 .right{
   float:right;
   /*margin: 0px 0px 0px 0px;*/
@@ -43,6 +50,11 @@
   font-weight: bold;
   font-size: 1.3em;
 }
+.panel-body-groups {
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-bottom: 50px;
+}
 .bootstrap-color-primary {
   color: #337ab7;
 }
@@ -66,6 +78,10 @@
     background-color: #286090;
     border-color: #204d74;
 }
+.btn.focus, .btn:focus, .btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
 .btn {
   margin: 5px 2px!important;
   padding: 6px 6px!important;
@@ -80,6 +96,20 @@
 .friend-dropdown {
   padding-top: 20px;
 }
+.group-dropdown {
+  /*padding-top: -200px;*/
+  padding-bottom: 75px;
+}
+
+.add-button {
+  float: right;
+  margin: 25px 2px!important;
+}
+div.add-item-button {
+  float: right;
+  margin: -45px 2px!important;
+}
+
 /* file uploader css */
 /*                   */
 /*.btn:focus, .upload-btn:focus{

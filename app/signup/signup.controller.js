@@ -5,7 +5,7 @@
     .module('sumApp')
     .controller('SignupController', SignupController);
 
-    function SignupController() {
+    function SignupController($scope, $http) {
       console.log('Signup controller....');
     }
 

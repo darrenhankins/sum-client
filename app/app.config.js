@@ -34,10 +34,20 @@
       .state({
         name: 'items',
         component: 'items',
-        params: {
-          dog: "Fred"
-        },
+        // params: {
+        //   dog: "Fred"
+        // },
         url: '/profile/items'
+      })
+      .state({
+        name: 'add',
+        component: 'add',
+        url: '/profile/add'
+      })
+      .state({
+        name: 'sendemail',
+        component: 'sendemail',
+        url: '/profile/sendemail'
       })
       .state({
         name: 'groups',

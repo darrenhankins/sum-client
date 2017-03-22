@@ -5,7 +5,7 @@
     .module('sumApp')
     .controller('FriendsController', FriendsController);
 
-    function FriendsController() {
+    function FriendsController($scope, $http) {
       console.log('This is the FriendsController...');
       const vm = this;
 

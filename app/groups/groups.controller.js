@@ -5,7 +5,7 @@
         .module('sumApp')
         .controller('GroupsController', GroupsController);
 
-    function GroupsController() {
+    function GroupsController($scope, $http) {
         console.log("This is the GroupsController...");
         const vm = this;
 
@@ -14,46 +14,134 @@
                     "id": 1,
                     "name": "Family",
                     "friends": [{
-                        "id": 1,
-                        "name": "Jim",
-                        "checked": true
-                        },{
-                        "id": 2,
-                        "name": "Tom",
-                        "checked": true
-                        },{
-                        "id": 3,
-                        "name": "Paul",
-                        "checked": true
-                        },{
-                        "id": 4,
-                        "name": "Rob",
-                        "checked": false
-                        },{
-                        "id": 5,
-                        "name": "Ben",
-                        "checked": true
-                        },{
-                        "id": 6,
-                        "name": "Fred",
-                        "checked": true
-                        },{
-                        "id": 7,
-                        "name": "Jeff",
-                        "checked": false
+                      "id": 1,
+                      "name": "Jim",
+                      "checked": true
+                      },{
+                      "id": 2,
+                      "name": "Tom",
+                      "checked": true
+                      },{
+                      "id": 3,
+                      "name": "Paul",
+                      "checked": true
+                      },{
+                      "id": 4,
+                      "name": "Rob",
+                      "checked": false
+                      },{
+                      "id": 5,
+                      "name": "Ben",
+                      "checked": false
+                      },{
+                      "id": 6,
+                      "name": "Fred",
+                      "checked": false
+                      },{
+                      "id": 7,
+                      "name": "Jeff",
+                      "checked": false
                       }]
                 },
                 {
                     "id": 2,
-                    "name": "Close Friends"
+                    "name": "Close Friends",
+                    "friends": [{
+                      "id": 1,
+                      "name": "Jim",
+                      "checked": false
+                      },{
+                      "id": 2,
+                      "name": "Tom",
+                      "checked": false
+                      },{
+                      "id": 3,
+                      "name": "Paul",
+                      "checked": false
+                      },{
+                      "id": 4,
+                      "name": "Rob",
+                      "checked": true
+                      },{
+                      "id": 5,
+                      "name": "Ben",
+                      "checked": true
+                      },{
+                      "id": 6,
+                      "name": "Fred",
+                      "checked": false
+                      },{
+                      "id": 7,
+                      "name": "Jeff",
+                      "checked": false
+                      }]
                 },
                 {
                     "id": 3,
-                    "name": "Co-workers"
+                    "name": "Co-workers",
+                    "friends": [{
+                      "id": 1,
+                      "name": "Jim",
+                      "checked": false
+                      },{
+                      "id": 2,
+                      "name": "Tom",
+                      "checked": false
+                      },{
+                      "id": 3,
+                      "name": "Paul",
+                      "checked": true
+                      },{
+                      "id": 4,
+                      "name": "Rob",
+                      "checked": false
+                      },{
+                      "id": 5,
+                      "name": "Ben",
+                      "checked": false
+                      },{
+                      "id": 6,
+                      "name": "Fred",
+                      "checked": false
+                      },{
+                      "id": 7,
+                      "name": "Jeff",
+                      "checked": true
+                      }]
+
                 },
                 {
                     "id": 4,
-                    "name": "Broncos Fans"
+                    "name": "Broncos Fans",
+                    "friends": [{
+                      "id": 1,
+                      "name": "Jim",
+                      "checked": true
+                      },{
+                      "id": 2,
+                      "name": "Tom",
+                      "checked": true
+                      },{
+                      "id": 3,
+                      "name": "Paul",
+                      "checked": true
+                      },{
+                      "id": 4,
+                      "name": "Rob",
+                      "checked": false
+                      },{
+                      "id": 5,
+                      "name": "Ben",
+                      "checked": true
+                      },{
+                      "id": 6,
+                      "name": "Fred",
+                      "checked": true
+                      },{
+                      "id": 7,
+                      "name": "Jeff",
+                      "checked": false
+                      }]
                 }
             ];
             vm.temporyArrFn();
@@ -121,6 +209,14 @@
            } else {
              console.log(vm.groupEdit[id]);
              vm.groupEdit[id]= false;
+           }
+         }
+
+         vm.editGroup = function (){
+           if (vm.groupEditDropdown == false || !vm.groupEditDropdown ){
+             vm.groupEditDropdown = true;
+           } else {
+             vm.groupEditDropdown= false;
            }
          }
 
