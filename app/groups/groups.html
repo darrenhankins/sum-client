@@ -1,46 +1,46 @@
-
 <div class="panel-body-groups">
-  <h2>Groups</h2>
-<span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.groupEditDropdown" ng-click="$ctrl.editGroup()"></span></div>
+    <h2>Groups</h2>
+    <span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.groupEditDropdown" ng-click="$ctrl.editGroup()"></span>
+</div>
 <!-- <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]"> -->
 <div class="group-dropdown" ng-show="$ctrl.groupEditDropdown">
 
-<div class="form-group">
-    <!-- <label for="inputName">Name</label> -->
-    <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name">
-    <small id="emailHelp" class="form-text text-muted"></small>
-</div>
+    <div class="form-group">
+        <!-- <label for="inputName">Name</label> -->
+        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name">
+        <small id="emailHelp" class="form-text text-muted"></small>
+    </div>
 
-<div class="">
+    <div class="">
 
-<a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editGroup()">Cancel</a>
-<a href="#" class="btn btn-success bottom-right" role="button" ng-click="">Save</a>
-<!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
-</div>
+        <a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editGroup()">Cancel</a>
+        <a href="#" class="btn btn-success bottom-right" role="button" ng-click="">Save</a>
+        <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
+    </div>
 </div>
 
 <div ng-repeat="group in $ctrl.groups">
     <div class="panel panel-default">
         <div class="panel-body">
-          <div>
-            {{ group.name }}
-            <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)"></span>
+            <div>
+                {{ group.name }}
+                <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)"></span>
             </div>
             <!-- Dropdown checkboxes -->
             <div class="row padding" ng-show="$ctrl.groupEdit[group.id]">
                 <div ng-repeat="friend in group.friends">
 
-                <div class="col-xs-6 col-sm-3">
-                    <div class="checkbox">
-                        <label ng-if="$ctrl.groupEdit[group.id]" ><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label>
-                        <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label>
-                    </div>
-                    <!-- <div class="input-group">
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="checkbox">
+                            <label ng-if="$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label>
+                            <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label>
+                        </div>
+                        <!-- <div class="input-group">
                         <span class="input-group-addon"><input type="checkbox" aria-label="...">Test</span>
                         <input type="text" class="form-control" aria-label="...">
                     </div> -->
-                    <!-- /input-group -->
-                </div>
+                        <!-- /input-group -->
+                    </div>
                 </div>
             </div>
             <!-- <a href="#" ng-if="!$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-primary right" role="button">Edit</a> -->

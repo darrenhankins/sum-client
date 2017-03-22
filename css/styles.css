@@ -3,6 +3,12 @@
   border-width: 1px;
   border-color: lightgrey;*/
 }
+.col-sm-6.min-width {
+  max-width: 100%;
+}
+.thumbnail.max-width {
+  max-width: 100%;
+}
 .padding {
   padding: 20px 20px 20px 20px;
 }
@@ -29,6 +35,9 @@
   float:right;
   /*margin: 0px 0px 0px 0px;*/
 }
+.a.tagliine {
+  float:bottom;
+}
 .label {
   /*min-width: 50px !important;*/
   width: 100%;
@@ -38,6 +47,9 @@
   max-height:120px;
   /*max-width:200px;*/
   /*height:150px;*/
+}
+.thumbnail .caption-center {
+      text-align: center;
 }
 .thumbnail {
   border-width: 2px!important;

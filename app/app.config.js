@@ -24,6 +24,7 @@
         name: 'claim',
         component: 'claim',
         // url: '/claim'
+        // 'http://localhost:3005/claim/item/1/friend/2/uuid/7a955f98-2619-40c7-95c9-1a64a3e06741'
         url: '/claim/item/:item_id/friend/:friend_id/uuid/:uuid'
       })
       .state({

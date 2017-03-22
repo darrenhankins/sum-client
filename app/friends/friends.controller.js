@@ -42,6 +42,14 @@
           vm.friendEdit[id]= false;
         }
       }
+
+      vm.editFriend = function (){
+        if (vm.friendEditDropdown == false || !vm.friendEditDropdown ){
+          vm.friendEditDropdown = true;
+        } else {
+          vm.friendEditDropdown= false;
+        }
+      }
     }
 
 })();

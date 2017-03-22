@@ -1,18 +1,64 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Login</h3>
-    </div>
-    <div class="panel-body">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="hankins.darren@gmail.com">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="col-sm-12 panel-body-groups">
+    <h2>Claim Item</h2>
+</div>
+
+</div>
+<div class="col-sm-12  min-width">
+    <div class="thumbnail max-width">
+        <img src="http://hlsb.com/Images/Rockies/tickets.png" alt="..." height="150px">
+        <div class="caption-center">
+            <h3>Rockies Tickets</h3>
+            <p>2 Tickets to Opening Day</p>
+            <p>$45.00</p>
+
+            <!-- <div class="bottom-right box">
+                <div class="label label-danger" ng-if="item.free">Free</div>
+                <div class="label label-success" ng-if="!item.free">$$$</div>
+                <br>
+                <div class="label label-success" ng-if="item.available">Available</div>
+                <div class="label label-danger" ng-if="!item.available">Claimed</div>
+            </div> -->
+            <!-- <a href="/profile/items" class="btn btn-success bottom-right" role="button">Claim</a>
+            <a href="/profile/items" class="btn btn-danger bottom-right" role="button">Cancel</a> -->
+
+            <!-- <p> -->
+              <a href="/profile/items" class="btn btn-success" role="button" ng-click="">Claim</a>
+                <a href="/profile/items" class="btn btn-danger" role="button" ng-click="">Cancel</a>
+              <!-- </p> -->
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="•••••••••">
-        </div>
-        <button type="submit" class="btn btn-primary" onclick="window.location='/profile/items';">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button>
     </div>
 
+<!-- <form ng-submit="$ctrl.newItem()">
+  <div class="form-group">
+    <label for="InputName">Name</label>
+    <input type="text" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="Rockies Tickets" ng-model="$ctrl.data.name" required>
+    <small id="nameHelp" class="form-text text-muted"></small>
+  </div>
+  <div class="form-group">
+    <label for="InputDescription">Description</label>
+    <textarea class="form-control" id="InputDescription" rows="3" placeholder="2 Tickets to Opening Day" ng-model="$ctrl.data.description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="InputImageUrl">Image Url</label>
+    <input type="text" class="form-control" id="InputImageUrl" aria-describedby="imageUrlHelp" placeholder="" ng-model="$ctrl.data.image_url">
+    <small id="imageUrlHelp" class="form-text text-muted"></small>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      Is this item for sale?
+      <input type="checkbox" class="form-check-input" ng-model="sale">
+    </label>
+  </div>
+<div class="form-group" ng-show="sale">
+  <label for="InputPrice">Price</label>
+  <input type="number" class="form-control" id="InputPrice" aria-describedby="pricelHelp" placeholder="$" ng-model="$ctrl.data.price">
+  <small id="pricelHelp" class="form-text text-muted"></small>
+</div>
+<hr> -->
+
+
+  <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+  <!-- <a href="/profile/items" class="btn btn-success bottom-right" role="button">Claim</a>
+  <a href="/profile/items" class="btn btn-danger bottom-right" role="button">Cancel</a> -->
+<!-- </form> -->
 </div>
