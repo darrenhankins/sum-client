@@ -5,18 +5,21 @@
 <!-- <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]"> -->
 <div class="group-dropdown" ng-show="$ctrl.groupEditDropdown">
 
+<form ng-submit="$ctrl.newGroup()">
     <div class="form-group">
         <!-- <label for="inputName">Name</label> -->
-        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name">
+        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name" ng-model="$ctrl.data.name" required >
         <small id="emailHelp" class="form-text text-muted"></small>
     </div>
 
     <div class="">
-
         <a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editGroup()">Cancel</a>
-        <a href="#" class="btn btn-success bottom-right" role="button" ng-click="">Save</a>
+        <button type="submit" class="btn btn-success bottom-right">Submit</button>
+        <!-- <a href="#" class="btn btn-success bottom-right" role="button" ng-click="$ctrl.newGroup()">Save</a> -->
         <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
     </div>
+</form>
+
 </div>
 
 <div ng-repeat="group in $ctrl.groups">

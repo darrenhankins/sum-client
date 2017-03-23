@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
+    const API_URL = getHostUrl();
+
     angular
         .module('sumApp')
         .controller('ItemsController', ItemsController);
@@ -38,7 +40,7 @@
           ];
 
           // get all item
-          $http.get('http://localhost:3000/user/1/items')
+          $http.get(`${API_URL}/user/1/items`)
           .then(function (response) {
             vm.items = response.data;
             console.log(response.data);
@@ -129,7 +131,7 @@
           //  '/:id/items/:item_id/sendemail'
           console.log("Send Email = "+item_id);
           var user_id = 1;
-          $http.get('http://localhost:3000/user/'+user_id+'/items/'+item_id+'/sendemail')
+          $http.get(`${API_URL}/user/${user_id}/items/${item_id}/sendemail`)
           .then(function (response) {
             // vm.items = response.data;
             console.log(response.data);
@@ -160,6 +162,14 @@
            vm.itemId = id;
          }
         // https://sum-app.herokuapp.com/user/1/items
+    }
+
+    function getHostUrl() {
+        if (window.location.host.indexOf('localhost') != -1) {
+            return 'http://localhost:3000';
+        } else {
+          return 'https://sum-app.herokuapp.com';
+        }
     }
 
 })();

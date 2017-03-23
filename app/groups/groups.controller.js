@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
+    const API_URL = getHostUrl();
+
     angular
         .module('sumApp')
         .controller('GroupsController', GroupsController);
@@ -220,7 +222,27 @@
            }
          }
 
+         vm.newGroup = function() {
+            vm.groupEditDropdown = false;
+             vm.data.user_id = 1;
+             console.log(vm.data);
+             $http.post(`${API_URL}/user/1/groups`, vm.data)
+             .then(function(data) {
+               console.log("New Group");
+               console.log(data);
+              //  $location.url('/profile/items');
+             }, function() {
+               console.log('NewItem Failed!');
+             });
+           }
+         }
 
-    }
+         function getHostUrl() {
+             if (window.location.host.indexOf('localhost') != -1) {
+                 return 'http://localhost:3000';
+             } else {
+               return 'https://sum-app.herokuapp.com';
+             }
+         }
 
 })();
