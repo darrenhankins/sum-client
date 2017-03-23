@@ -7,7 +7,7 @@
     .module('sumApp')
     .controller('AddController', AddController);
 
-    function AddController($scope, $http, $location) {
+    function AddController($scope, $http, $location, $rootScope) {
       console.log('This is the AddController...');
       const vm = this;
 
