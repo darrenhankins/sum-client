@@ -51,9 +51,11 @@
                 </div>
 
                 <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.setItemId(item.id)">Edit</a>
-                    <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.group.length == 0 && item.available" disabled>No Groups</a>
+                    <!-- <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.group.length == 0 && item.available" disabled>No Groups</a> -->
                     <a href="#" class="btn btn-primary-emailed" role="button" ng-if="!item.available" disabled>Claimed</a>
-                    <a href="#" class="btn btn-primary-unemailed" role="button" data-toggle="modal" data-target="#pleaseWaitDialog" ng-show="item.group.length > 0" ng-if="item.available && !item.emailed" ng-click="$ctrl.sendEmail(item.id)">Send Email</a>
+                    <a href="#" class="btn btn-primary-unemailed" role="button" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="item.available && !item.emailed" ng-click="$ctrl.sendEmail(item.id)">Send Email</a>
+
+                    <!-- <a href="#" class="btn btn-primary-unemailed" role="button" data-toggle="modal" data-target="#pleaseWaitDialog" ng-show="item.group.length > 0" ng-if="item.available && !item.emailed" ng-click="$ctrl.sendEmail(item.id)">Send Email</a> -->
                     <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.emailed" ng-click="$ctrl.sendEmail(item.id)">Resend Email</a></p>
             </div>
         </div>

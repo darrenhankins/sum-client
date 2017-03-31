@@ -2,29 +2,60 @@
     <div class="panel-heading">
         <h3 class="panel-title">Signup</h3>
     </div>
+    <form name="signupForm" ng-submit="$ctrl.signup()">
     <div class="panel-body">
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="inputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              ng-model="$ctrl.signupForm.email"
+              required>
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <div class="alert alert-danger" role="alert" ng-if="$ctrl.signUpFailed">{{ $ctrl.message }}</div>
+        <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputUsername"
+              placeholder="Enter username"
+              ng-model="$ctrl.signupForm.username"
+              required>
             <small id="emailHelp" class="form-text text-muted"></small>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Re-enter Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Re-e nter email">
-            <small id="emailHelp" class="form-text text-muted"></small>
+            <label for="inputPassword">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              placeholder="Password"
+              minlength = "5"
+              maxlength = "20"
+              ng-model="$ctrl.signupForm.password"
+              required>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter username">
-            <small id="emailHelp" class="form-text text-muted"></small>
+            <label for="inputPassword2">Password Match</label>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword2"
+              placeholder="Re-Enter Password"
+              minlength = "5"
+              maxlength = "20"
+              ng-model="$ctrl.signupForm.password2"
+              required>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary" onclick="window.location='/login';">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/profile/items';">Submit</button>
-
-
+        <div class="alert alert-danger" role="alert" ng-if="$ctrl.passwordsFailed">{{ $ctrl.message }}</div>
+        <button type="submit" class="btn btn-primary">Submit</button><button type="submit" class="btn btn-primary" onclick="window.location='/login';">Login</button>
+        <!-- <button type="submit" class="btn btn-primary" onclick="window.location='/login';">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/profile/items';">Submit</button> -->
     </div>
+  </form>
 
 </div>

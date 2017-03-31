@@ -6,12 +6,12 @@
 <form ng-submit="$ctrl.newItem()">
   <div class="form-group">
     <label for="InputName">Name</label>
-    <input type="text" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="" ng-model="$ctrl.data.name" required>
+    <input type="text" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="Football" ng-model="$ctrl.data.name" required>
     <small id="nameHelp" class="form-text text-muted"></small>
   </div>
   <div class="form-group">
     <label for="InputDescription">Description</label>
-    <textarea class="form-control" id="InputDescription" rows="3" ng-model="$ctrl.data.description"></textarea>
+    <textarea class="form-control" id="InputDescription" rows="3" ng-model="$ctrl.data.description" placeholder="New Fooball" ></textarea>
   </div>
   <div class="form-group">
     <label for="InputImageUrl">Image Url</label>

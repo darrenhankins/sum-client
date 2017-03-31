@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "ngUpload": "^0.5.19"
+    "ngUpload": "^0.5.19",
+    "angular-messages": "^1.6.3"
   }
 }

@@ -12,141 +12,144 @@
         const vm = this;
 
         vm.$onInit = function() {
-            vm.groups = [{
-                    "id": 1,
-                    "name": "Family",
-                    "friends": [{
-                      "id": 1,
-                      "name": "Jim",
-                      "checked": true
-                      },{
-                      "id": 2,
-                      "name": "Tom",
-                      "checked": true
-                      },{
-                      "id": 3,
-                      "name": "Paul",
-                      "checked": true
-                      },{
-                      "id": 4,
-                      "name": "Rob",
-                      "checked": false
-                      },{
-                      "id": 5,
-                      "name": "Ben",
-                      "checked": false
-                      },{
-                      "id": 6,
-                      "name": "Fred",
-                      "checked": false
-                      },{
-                      "id": 7,
-                      "name": "Jeff",
-                      "checked": false
-                      }]
-                },
-                {
-                    "id": 2,
-                    "name": "Close Friends",
-                    "friends": [{
-                      "id": 1,
-                      "name": "Jim",
-                      "checked": false
-                      },{
-                      "id": 2,
-                      "name": "Tom",
-                      "checked": false
-                      },{
-                      "id": 3,
-                      "name": "Paul",
-                      "checked": false
-                      },{
-                      "id": 4,
-                      "name": "Rob",
-                      "checked": true
-                      },{
-                      "id": 5,
-                      "name": "Ben",
-                      "checked": true
-                      },{
-                      "id": 6,
-                      "name": "Fred",
-                      "checked": false
-                      },{
-                      "id": 7,
-                      "name": "Jeff",
-                      "checked": false
-                      }]
-                },
-                {
-                    "id": 3,
-                    "name": "Co-workers",
-                    "friends": [{
-                      "id": 1,
-                      "name": "Jim",
-                      "checked": false
-                      },{
-                      "id": 2,
-                      "name": "Tom",
-                      "checked": false
-                      },{
-                      "id": 3,
-                      "name": "Paul",
-                      "checked": true
-                      },{
-                      "id": 4,
-                      "name": "Rob",
-                      "checked": false
-                      },{
-                      "id": 5,
-                      "name": "Ben",
-                      "checked": false
-                      },{
-                      "id": 6,
-                      "name": "Fred",
-                      "checked": false
-                      },{
-                      "id": 7,
-                      "name": "Jeff",
-                      "checked": true
-                      }]
+            // vm.groups = [{
+            //         "id": 1,
+            //         "name": "Family",
+            //         "friends": [{
+            //           "id": 1,
+            //           "name": "Jim",
+            //           "checked": true
+            //           },{
+            //           "id": 2,
+            //           "name": "Tom",
+            //           "checked": true
+            //           },{
+            //           "id": 3,
+            //           "name": "Paul",
+            //           "checked": true
+            //           },{
+            //           "id": 4,
+            //           "name": "Rob",
+            //           "checked": false
+            //           },{
+            //           "id": 5,
+            //           "name": "Ben",
+            //           "checked": false
+            //           },{
+            //           "id": 6,
+            //           "name": "Fred",
+            //           "checked": false
+            //           },{
+            //           "id": 7,
+            //           "name": "Jeff",
+            //           "checked": false
+            //           }]
+            //     },
+            //     {
+            //         "id": 2,
+            //         "name": "Close Friends",
+            //         "friends": [{
+            //           "id": 1,
+            //           "name": "Jim",
+            //           "checked": false
+            //           },{
+            //           "id": 2,
+            //           "name": "Tom",
+            //           "checked": false
+            //           },{
+            //           "id": 3,
+            //           "name": "Paul",
+            //           "checked": false
+            //           },{
+            //           "id": 4,
+            //           "name": "Rob",
+            //           "checked": true
+            //           },{
+            //           "id": 5,
+            //           "name": "Ben",
+            //           "checked": true
+            //           },{
+            //           "id": 6,
+            //           "name": "Fred",
+            //           "checked": false
+            //           },{
+            //           "id": 7,
+            //           "name": "Jeff",
+            //           "checked": false
+            //           }]
+            //     },
+            //     {
+            //         "id": 3,
+            //         "name": "Co-workers",
+            //         "friends": [{
+            //           "id": 1,
+            //           "name": "Jim",
+            //           "checked": false
+            //           },{
+            //           "id": 2,
+            //           "name": "Tom",
+            //           "checked": false
+            //           },{
+            //           "id": 3,
+            //           "name": "Paul",
+            //           "checked": true
+            //           },{
+            //           "id": 4,
+            //           "name": "Rob",
+            //           "checked": false
+            //           },{
+            //           "id": 5,
+            //           "name": "Ben",
+            //           "checked": false
+            //           },{
+            //           "id": 6,
+            //           "name": "Fred",
+            //           "checked": false
+            //           },{
+            //           "id": 7,
+            //           "name": "Jeff",
+            //           "checked": true
+            //           }]
+            //
+            //     },
+            //     {
+            //         "id": 4,
+            //         "name": "Broncos Fans",
+            //         "friends": [{
+            //           "id": 1,
+            //           "name": "Jim",
+            //           "checked": true
+            //           },{
+            //           "id": 2,
+            //           "name": "Tom",
+            //           "checked": true
+            //           },{
+            //           "id": 3,
+            //           "name": "Paul",
+            //           "checked": true
+            //           },{
+            //           "id": 4,
+            //           "name": "Rob",
+            //           "checked": false
+            //           },{
+            //           "id": 5,
+            //           "name": "Ben",
+            //           "checked": true
+            //           },{
+            //           "id": 6,
+            //           "name": "Fred",
+            //           "checked": true
+            //           },{
+            //           "id": 7,
+            //           "name": "Jeff",
+            //           "checked": false
+            //           }]
 
-                },
-                {
-                    "id": 4,
-                    "name": "Broncos Fans",
-                    "friends": [{
-                      "id": 1,
-                      "name": "Jim",
-                      "checked": true
-                      },{
-                      "id": 2,
-                      "name": "Tom",
-                      "checked": true
-                      },{
-                      "id": 3,
-                      "name": "Paul",
-                      "checked": true
-                      },{
-                      "id": 4,
-                      "name": "Rob",
-                      "checked": false
-                      },{
-                      "id": 5,
-                      "name": "Ben",
-                      "checked": true
-                      },{
-                      "id": 6,
-                      "name": "Fred",
-                      "checked": true
-                      },{
-                      "id": 7,
-                      "name": "Jeff",
-                      "checked": false
-                      }]
-                }
-            ];
+                // }
+            // ];
             vm.temporyArrFn();
+            vm.getGroups();
+
         };
 
         vm.temporyArrFn = function (){
@@ -202,6 +205,8 @@
         //   }
         // }
 
+        // $http.get(`${apiInfo.host}/foo`)
+
 
         vm.groupEdit = [];
          vm.editGroupInfo = function (id){
@@ -212,6 +217,14 @@
              console.log(vm.groupEdit[id]);
              vm.groupEdit[id]= false;
            }
+         }
+
+         vm.getGroups = function(){
+           $http.get(`${API_URL}/user/1/groups`)
+           .then(function (response) {
+             vm.groups = response.data;
+             console.log(response.data);
+           });
          }
 
          vm.editGroup = function (){
@@ -230,6 +243,7 @@
              .then(function(data) {
                console.log("New Group");
                console.log(data);
+               vm.getGroups();
               //  $location.url('/profile/items');
              }, function() {
                console.log('NewItem Failed!');

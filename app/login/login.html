@@ -2,17 +2,58 @@
     <div class="panel-heading">
         <h3 class="panel-title">Login</h3>
     </div>
+    <form name="loginForm" ng-submit="$ctrl.login()">
     <div class="panel-body">
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="hankins.darren@gmail.com">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Email"
+              minlength = "5"
+              ng-model="$ctrl.loginForm.email"
+              required>
+
+              <!-- <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+                minlength = "5"
+                ng-model="$ctrl.data.password"
+                required> -->
+
+            <!-- <div ng-messages="$ctrl.loginForm.email.$error">
+              <p ng-message="minlength">Your name is to short.</p>
+              <p ng-message="maxlength">Your name is to long.</p>
+              <p ng-message="required">You did not enter a field.</p>
+            </div> -->
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="•••••••••">
-        </div>
-        <button type="submit" class="btn btn-primary" onclick="window.location='/profile/items';">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button>
-    </div>
 
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+              minlength = "5"
+              maxlength = "20"
+              ng-model="$ctrl.loginForm.password"
+              required>
+
+            <!-- <div ng-messages="$ctrl.loginForm.password.$error" ng-if="$ctrl.loginForm.password.$dirty" style="color:maroon" role="alert"> -->
+          <!-- <div ng-message="required">You did not enter a field</div> -->
+          <!-- <div ng-message="minlength">Your field is too short (-{{$ctrl.minlength-$ctrl.loginForm.title.$viewValue.length}} )</div>
+          <div ng-message="maxlength">Your field is too long (+{{$ctrl.loginForm.title.$viewValue.length-$ctrl.maxlength}} )</div> -->
+        </div>
+        <div class="alert alert-danger" role="alert" ng-if="$ctrl.loginFailed">{{ $ctrl.message }}</div>
+        <!-- <button type="submit" class="btn btn-primary" onclick="window.location='/profile/items';">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button> -->
+        <button type="submit" class="btn btn-primary">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button>
+    </div>
+  </form>
 </div>
