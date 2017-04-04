@@ -10,6 +10,8 @@
     function ClaimController($scope, $http, $stateParams) {
         console.log("This is the ClaimController...");
         const vm = this;
+        vm.item_id = $stateParams.item_id;
+
 
         // '/claim/item/:item_id/friend/:friend_id/uuid/:uuid'
         console.log($stateParams.item_id);
@@ -28,7 +30,7 @@
             //   });
             vm.claimedItem = true;
 
-            $http.patch(`${API_URL}/user/claim/items/${$stateParams.item_id}`, vm.data)
+            $http.patch(`${API_URL}/user/claim/items/${vm.item_id}`, vm.data)
                 .then(function(data) {
                     console.log(data);
                     console.log("Claimed!!!");

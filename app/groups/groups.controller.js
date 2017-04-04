@@ -7,9 +7,11 @@
         .module('sumApp')
         .controller('GroupsController', GroupsController);
 
-    function GroupsController($scope, $http) {
+    function GroupsController($scope, $http, $stateParams) {
         console.log("This is the GroupsController...");
         const vm = this;
+
+        vm.user_id = $stateParams.id;
 
         vm.$onInit = function() {
             // vm.groups = [{
@@ -220,7 +222,7 @@
          }
 
          vm.getGroups = function(){
-           $http.get(`${API_URL}/user/1/groups`)
+           $http.get(`${API_URL}/user/${vm.user_id}/groups`)
            .then(function (response) {
              vm.groups = response.data;
              console.log(response.data);
@@ -230,16 +232,19 @@
          vm.editGroup = function (){
            if (vm.groupEditDropdown == false || !vm.groupEditDropdown ){
              vm.groupEditDropdown = true;
+             
+
            } else {
              vm.groupEditDropdown= false;
+
            }
          }
 
          vm.newGroup = function() {
             vm.groupEditDropdown = false;
-             vm.data.user_id = 1;
+             vm.data.user_id = vm.user_id;
              console.log(vm.data);
-             $http.post(`${API_URL}/user/1/groups`, vm.data)
+             $http.post(`${API_URL}/user/${vm.user_id}/groups`, vm.data)
              .then(function(data) {
                console.log("New Group");
                console.log(data);

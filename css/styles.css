@@ -45,6 +45,7 @@
 }
 .thumbnail img {
   max-height:120px;
+  padding-top: 20px;
   /*max-width:200px;*/
   /*height:150px;*/
 }

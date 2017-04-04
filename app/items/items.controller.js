@@ -7,56 +7,42 @@
         .module('sumApp')
         .controller('ItemsController', ItemsController);
 
-    function ItemsController($scope, $http, $location) {
+    function ItemsController($scope, $http, $location, $stateParams) {
         console.log("This is the ItemsController...");
         const vm = this;
 
         // $scope.complete = function(content) {
         //   console.log(content); // process content
         // }
+        console.log($stateParams.id);
+        console.log($stateParams.dog);
+        vm.user_id = $stateParams.id;
+
 
         vm.$onInit = function() {
 
-          vm.groups = [{
-                  "id": 1,
-                  "name": "Family",
-                  "checked": true
-              },
-              {
-                  "id": 2,
-                  "name": "Close Friends",
-                  "checked": true
-              },
-              {
-                  "id": 3,
-                  "name": "Co-workers",
-                  "checked": false
-              },
-              {
-                  "id": 4,
-                  "name": "Broncos Fans",
-                  "checked": true
-              }
-          ];
+          // vm.groups = [{
+          //         "id": 1,
+          //         "name": "Family",
+          //         "checked": true
+          //     },
+          //     {
+          //         "id": 2,
+          //         "name": "Close Friends",
+          //         "checked": true
+          //     },
+          //     {
+          //         "id": 3,
+          //         "name": "Co-workers",
+          //         "checked": false
+          //     },
+          //     {
+          //         "id": 4,
+          //         "name": "Broncos Fans",
+          //         "checked": true
+          //     }
+          // ];
 
-          // get all item
-          $http.get(`${API_URL}/user/1/items`)
-          .then(function (response) {
-            vm.items = response.data;
-            console.log(response.data);
-            // $http.get('http://localhost:3000/user/1/groups')
-            // .then(function (response) {
-            //   vm.groups = response.data;
-            //   console.log(response.data);
-            // });
-          });
-
-          // get one item
-          // $http.get('http://localhost:3000/user/1/items/1/')
-          // .then(function (response) {
-          //   vm.things = response.data;
-          //   console.log(response.data);
-          // });
 
             // vm.items = [{
             //         "id": 1,
@@ -127,11 +113,31 @@
             // ];
         }
 
+        // get all item
+        $http.get(`${API_URL}/user/${vm.user_id}/items`)
+        .then(function (response) {
+          vm.items = response.data;
+          console.log(response.data);
+          // $http.get('http://localhost:3000/user/1/groups')
+          // .then(function (response) {
+          //   vm.groups = response.data;
+          //   console.log(response.data);
+          // });
+        });
+
+        // get one item
+        // $http.get('http://localhost:3000/user/1/items/1/')
+        // .then(function (response) {
+        //   vm.things = response.data;
+        //   console.log(response.data);
+        // });
+
+
         vm.sendEmail = function (item_id){
           //  '/:id/items/:item_id/sendemail'
           console.log("Send Email = "+item_id);
           var user_id = 1;
-          $http.get(`${API_URL}/user/${user_id}/items/${item_id}/sendemail`)
+          $http.get(`${API_URL}/user/${vm.user_id}/items/${item_id}/sendemail`)
           .then(function (response) {
             // vm.items = response.data;
             console.log(response.data);

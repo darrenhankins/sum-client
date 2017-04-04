@@ -41,9 +41,10 @@
                     case 'success':
                       console.log(response.message);
                       console.log(response.token);
+                      console.log(response.member);
                       vm.message = response.message;
                       vm.loginFailed = false;
-                      $location.url('/profile/items');
+                      $location.url(`/profile/${response.member.id}/items`);
                       break;
                     case 'failure 1':
                       vm.message = response.message;

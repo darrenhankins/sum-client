@@ -30,35 +30,35 @@
       .state({
         name: 'profile',
         component: 'profile',
-        url: '/profile'
+        url: '/profile/:id'
       })
       .state({
         name: 'items',
         component: 'items',
-        // params: {
-        //   dog: "Fred"
-        // },
-        url: '/profile/items'
+        params: {
+          dog: "Fred"
+        },
+        url: '/profile/:id/items'
       })
       .state({
         name: 'add',
         component: 'add',
-        url: '/profile/add'
+        url: '/profile/:id/add'
       })
       .state({
         name: 'sendemail',
         component: 'sendemail',
-        url: '/profile/sendemail'
+        url: '/profile/:id/sendemail'
       })
       .state({
         name: 'groups',
         component: 'groups',
-        url: '/profile/groups'
+        url: '/profile/:id/groups'
       })
       .state({
         name: 'friends',
         component: 'friends',
-        url: '/profile/friends'
+        url: '/profile/:id/friends'
       });
 
       $urlRouterProvider.otherwise('/');

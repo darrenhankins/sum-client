@@ -7,9 +7,11 @@
     .module('sumApp')
     .controller('FriendsController', FriendsController);
 
-    function FriendsController($scope, $http, $location) {
+    function FriendsController($scope, $http, $location, $stateParams) {
       console.log('This is the FriendsController...');
       const vm = this;
+
+      vm.user_id = $stateParams.id;
 
       vm.$onInit = function(){
       //   vm.friends = [{
@@ -50,7 +52,7 @@
      }
 
      vm.getFriends = function(){
-       $http.get(`${API_URL}/user/1/friends`)
+       $http.get(`${API_URL}/user/${vm.user_id}/friends`)
        .then(function (response) {
          vm.friends = response.data;
          console.log(response.data);
@@ -59,9 +61,9 @@
 
      vm.addFriend = function() {
        console.log("Add Friend");
-         vm.data.user_id = 1;
+         vm.data.user_id = vm.user_id;
          console.log(vm.data);
-         $http.post(`${API_URL}/user/1/friends`, vm.data)
+         $http.post(`${API_URL}/user/${vm.user_id}/friends`, vm.data)
          .then(function(data) {
            console.log(data);
            vm.getFriends();

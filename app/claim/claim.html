@@ -1,3 +1,25 @@
+<nav class="navbar navbar-default transparent navbar-static-top" role="navigation" id="navbar-main">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navCollapse">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="fa fa-chevron-down"></span> <b>Menu</b>
+          </button>
+          <img src="../images/sum-app-logo.png" width="300px">
+          <a class="tagline">Share ( U+Me )</a>
+            <!-- <a class="navbar-brand" href="#">Sum (Share U + M)</a> -->
+        </div>
+        <div class="collapse navbar-collapse" id="navCollapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Logout</a></li>
+                <li><a href="/profile/{{ $ctrl.user_id }}/items">Items</a></li>
+                <li><a href="/profile/{{ $ctrl.user_id }}/friends">Friends</a></li>
+                <li><a href="/profile/{{ $ctrl.user_id }}/groups">Groups</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="container">
 <div class="col-sm-12 panel-body-groups">
     <h2>Claim Item</h2>
 </div>
@@ -42,3 +64,4 @@
         </div>
     </div>
 </div>
+</main>
