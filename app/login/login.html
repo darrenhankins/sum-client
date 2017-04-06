@@ -11,7 +11,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navCollapse">
             <ul class="nav navbar-nav navbar-right">
-                
+
             </ul>
         </div>
     </div>
@@ -24,56 +24,53 @@
     <form name="loginForm" ng-submit="$ctrl.login()">
     <div class="panel-body">
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="inputEmail">Email address</label>
 
             <input
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
+              id="inputEmail"
               aria-describedby="emailHelp"
               placeholder="Email"
               minlength = "5"
               ng-model="$ctrl.loginForm.email"
               required>
 
-              <!-- <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                minlength = "5"
-                ng-model="$ctrl.data.password"
-                required> -->
-
-            <!-- <div ng-messages="$ctrl.loginForm.email.$error">
+              <!-- <div ng-messages="$ctrl.loginForm.email.$error">
               <p ng-message="minlength">Your name is to short.</p>
               <p ng-message="maxlength">Your name is to long.</p>
               <p ng-message="required">You did not enter a field.</p>
-            </div> -->
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+              </div> -->
+              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="inputPassword">Password</label>
 
             <input
               type="password"
               class="form-control"
-              id="exampleInputPassword1"
+              id="inputPassword"
               placeholder="Password"
               minlength = "5"
               maxlength = "20"
               ng-model="$ctrl.loginForm.password"
               required>
 
-            <!-- <div ng-messages="$ctrl.loginForm.password.$error" ng-if="$ctrl.loginForm.password.$dirty" style="color:maroon" role="alert"> -->
-          <!-- <div ng-message="required">You did not enter a field</div> -->
-          <!-- <div ng-message="minlength">Your field is too short (-{{$ctrl.minlength-$ctrl.loginForm.title.$viewValue.length}} )</div>
-          <div ng-message="maxlength">Your field is too long (+{{$ctrl.loginForm.title.$viewValue.length-$ctrl.maxlength}} )</div> -->
+              <!-- <div ng-messages="$ctrl.loginForm.password.$error" ng-if="$ctrl.loginForm.password.$dirty" style="color:maroon" role="alert"> -->
+              <!-- <div ng-message="required">You did not enter a field</div> -->
+              <!-- <div ng-message="minlength">Your field is too short (-{{$ctrl.minlength-$ctrl.loginForm.title.$viewValue.length}} )</div>
+              <div ng-message="maxlength">Your field is too long (+{{$ctrl.loginForm.title.$viewValue.length-$ctrl.maxlength}} )</div> -->
+
         </div>
         <div class="alert alert-danger" role="alert" ng-if="$ctrl.loginFailed">{{ $ctrl.message }}</div>
-        <!-- <button type="submit" class="btn btn-primary" onclick="window.location='/profile/items';">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button> -->
-        <button type="submit" class="btn btn-primary">Login</button><button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#pleaseWaitDialog">Login</button>
+        <button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button>
     </div>
   </form>
+</div>
+<div class="modal" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+        <div id="ajax_loader">
+          <img src="images/ajax-loader.gif" width="100px" style="display: block; margin-left: auto; margin-right: auto; padding-top: 250px">
+        </div>
 </div>
 </main>

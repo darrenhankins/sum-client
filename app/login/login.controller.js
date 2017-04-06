@@ -26,15 +26,10 @@
 
         vm.login = function() {
             $http.post(`${API_URL}/token/login`, vm.loginForm)
-                // .then(function(data) {
-                //     $location.url('/profile/items');
-                // }, function() {
-                //     console.log("data", data);
-                //     vm.resetForm();
-                //     vm.login = false;
-                //     console.log('login Failed!');
-                // });
+
                 .then(function(data) {
+                  $('#pleaseWaitDialog').modal('hide');
+
                   console.log(data);
                   let response = data.data.response;
                   switch(response.status) {

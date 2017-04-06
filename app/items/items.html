@@ -78,7 +78,7 @@
                     <a href="#" class="btn btn-primary-unemailed" role="button" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="item.available && !item.emailed" ng-click="$ctrl.sendEmail(item.id)">Send Email</a>
 
                     <!-- <a href="#" class="btn btn-primary-unemailed" role="button" data-toggle="modal" data-target="#pleaseWaitDialog" ng-show="item.group.length > 0" ng-if="item.available && !item.emailed" ng-click="$ctrl.sendEmail(item.id)">Send Email</a> -->
-                    <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.emailed" ng-click="$ctrl.sendEmail(item.id)">Resend Email</a></p>
+                    <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.emailed && item.available" ng-click="$ctrl.sendEmail(item.id)">Resend Email</a></p>
             </div>
         </div>
     </div>
