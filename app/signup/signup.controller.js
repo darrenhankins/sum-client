@@ -32,6 +32,7 @@
           console.log(vm.signupForm);
           $http.post(`${API_URL}/token/signup`, vm.signupForm)
             .then(data =>{
+              $('#pleaseWaitDialog').modal('hide');
               console.log("Data: ", data.data.status);
               switch(data.data.status) {
                 case 'failure':
