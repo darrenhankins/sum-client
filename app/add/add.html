@@ -40,7 +40,7 @@
     <input type="text" class="form-control" id="InputImageUrl" aria-describedby="imageUrlHelp" placeholder="" ng-model="$ctrl.data.image_url">
     <small id="imageUrlHelp" class="form-text text-muted"></small>
   </div>
-  <div class="form-check">
+  <!-- <div class="form-check">
     <label class="form-check-label">
       Is this item for sale?
       <input type="checkbox" class="form-check-input" ng-model="sale">
@@ -50,11 +50,10 @@
   <label for="InputPrice">Price</label>
   <input type="number" class="form-control" id="InputPrice" aria-describedby="pricelHelp" placeholder="$" ng-model="$ctrl.data.price">
   <small id="pricelHelp" class="form-text text-muted"></small>
-</div>
-<hr>
+</div> -->
+<!-- <hr> -->
 
-<!-- Dropdown checkboxes -->
-<label for="InputImageUrl">Groups</label>
+<!-- <label for="InputImageUrl">Groups</label>
 <div class="row padding">
     <div ng-repeat="group in $ctrl.groups">
 
@@ -63,14 +62,9 @@
             <label ng-if="$ctrl.groupEdit[group.id]" ><input type="checkbox" ng-model="$ctrl.data.group[group.id]"  checked>{{ group.name }}</label>
             <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" ng-model="$ctrl.data.group[group.id]" >{{ group.name }}</label>
         </div>
-        <!-- <div class="input-group">
-            <span class="input-group-addon"><input type="checkbox" aria-label="...">Test</span>
-            <input type="text" class="form-control" aria-label="...">
-        </div> -->
-        <!-- /input-group -->
     </div>
     </div>
-</div>
+</div> -->
 
   <button type="submit" class="btn btn-success">Submit</button>
   <a href="/profile/{{ $ctrl.user_id }}/items" class="btn btn-danger bottom-right" role="button">Cancel</a>

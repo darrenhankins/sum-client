@@ -63,7 +63,7 @@
 
         </div>
         <div class="alert alert-danger" role="alert" ng-if="$ctrl.loginFailed">{{ $ctrl.message }}</div>
-        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#pleaseWaitDialog">Login</button>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#pleaseWaitDialog" ng-disabled="loginForm.$invalid">Login</button>
         <button type="submit" class="btn btn-primary" onclick="window.location='/signup';">Signup</button>
     </div>
   </form>

@@ -117,6 +117,7 @@
         $http.get(`${API_URL}/user/${vm.user_id}/items`)
         .then(function (response) {
           vm.items = response.data;
+          // console.log("Item "+vm.items[1].id+":", vm.items[1]);
           console.log(response.data);
           // $http.get('http://localhost:3000/user/1/groups')
           // .then(function (response) {
@@ -152,6 +153,10 @@
           });
         }
 
+        vm.updateItem = function (id){
+          console.log("Update Item");
+        }
+
         vm.itemEdit = [];
          vm.editItemInfo = function (id){
            if (vm.itemEdit[id] == false || !vm.itemEdit[id]){
@@ -166,6 +171,11 @@
          vm.setItemId = function (id){
            console.log(id);
            vm.itemId = id;
+         }
+
+         vm.setItemEditId = function (id) {
+           console.log(id);
+           vm.itemEditId = id;
          }
         // https://sum-app.herokuapp.com/user/1/items
     }

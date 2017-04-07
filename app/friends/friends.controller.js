@@ -40,6 +40,11 @@
 
     };
 
+    vm.resetForm = function(){
+      vm.data.name = "";
+      vm.data.email = "";
+    }
+
     vm.friendEdit = [];
      vm.editFriendInfo = function (id){
        if (vm.friendEdit[id] == false || !vm.friendEdit[id]){
@@ -68,6 +73,7 @@
            console.log(data);
            vm.getFriends();
            vm.friendEditDropdown = false;
+           vm.resetForm();
 
           //  $location.url('/profile/friends');
          }, function() {

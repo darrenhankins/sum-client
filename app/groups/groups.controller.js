@@ -154,6 +154,10 @@
 
         };
 
+        vm.resetForm = function(){
+          vm.data.name = "";
+        }
+
         vm.temporyArrFn = function (){
 
           // vm.temporyArray = vm.groups[0].friends;
@@ -227,14 +231,18 @@
           var currentGroup = [];
           // currentFriendsInGroup
           // allFriendsOfUser
-          console.log("Groups:", vm.allFriendsOfUser.length);
-          for (var i=0; i<vm.allFriendsOfUser.length; i++){
-            if (vm.currentFriendsInGroup[i].id == vm.allFriendsOfUser[i].id) {
-              console.log(vm.allFriendsOfUser[i].id, vm.currentFriendsInGroup[i].id);
-            }
+          console.log("Total Friends of Users:", vm.allFriendsOfUser.length);
+          console.log("Total Groups:", vm.currentFriendsInGroup.length);
+
+          console.log("Name", vm.currentFriendsInGroup[1].name);
+          console.log("ID", vm.currentFriendsInGroup[0].id);
+          // for (var i=0; i<vm.allFriendsOfUser.length; i++){
+          //   if (vm.currentFriendsInGroup[i].id == vm.allFriendsOfUser[i].id) {
+          //     console.log(vm.allFriendsOfUser[i].id, vm.currentFriendsInGroup[i].id);
+          //   }
             // console.log("Name", vm.currentFriendsInGroup[i].name);
             // console.log("Email", vm.currentFriendsInGroup[i].email);
-          }
+          // }
         }
 
          vm.getGroups = function(){
@@ -244,11 +252,11 @@
              vm.friends = response.data[1];
 
              // group name
-             console.log(response.data[0][0].name);
+            //  console.log(response.data[0][0].name);
              // group array, and current friends in group
             //  vm.currentFriendsInGroup = response.data[0][0].friend;
              vm.currentFriendsInGroup = response.data[0];
-             console.log("currentFriendsInGroup", vm.currentFriendsInGroup[1].friend[0]);
+            //  console.log("currentFriendsInGroup", vm.currentFriendsInGroup[1].friend[0]);
              // all friends array
              vm.allFriendsOfUser = response.data[1];
              console.log("allFriendsOfUser", response.data[1]);
@@ -260,19 +268,19 @@
            if (vm.groupEditDropdown == false || !vm.groupEditDropdown ){
              vm.groupEditDropdown = true;
 
-
            } else {
              vm.groupEditDropdown= false;
-
+             vm.resetForm();
            }
          }
 
          vm.newGroup = function() {
-            vm.groupEditDropdown = false;
              vm.data.user_id = vm.user_id;
              console.log(vm.data);
              $http.post(`${API_URL}/user/${vm.user_id}/groups`, vm.data)
              .then(function(data) {
+               vm.groupEditDropdown = false;
+               vm.resetForm();
                console.log("New Group");
                console.log(data);
                vm.getGroups();

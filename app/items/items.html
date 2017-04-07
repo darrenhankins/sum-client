@@ -72,7 +72,7 @@
                   <!-- <p>{{ group.name }}</p> -->
                 </div>
 
-                <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.setItemId(item.id)">Edit</a>
+                <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.setItemEditId($index)">Edit</a>
                     <!-- <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.group.length == 0 && item.available" disabled>No Groups</a> -->
                     <a href="#" class="btn btn-primary-emailed" role="button" ng-if="!item.available" disabled>Claimed</a>
                     <a href="#" class="btn btn-primary-unemailed" role="button" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="item.available && !item.emailed" ng-click="$ctrl.sendEmail(item.id)">Send Email</a>
@@ -117,84 +117,56 @@
 
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
-            <!-- Modal content-->
             <div class="modal-content">
-                <!-- <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ $ctrl.items[$ctrl.itemId-1].name }}</h4>
-                </div> -->
-                <!-- <div class="modal-body"> -->
-                    <div class="col-sm-12">
-                        <div class="thumbnail">
-                            <img src="{{ $ctrl.items[$ctrl.itemId-1].image_url }}" alt="..." height="150px">
-                            <div class="caption">
-
-
-                              <form ng-submit="$ctrl.newItem()">
-                                <div class="form-group">
-                                  <label for="InputName">Name</label>
-                                  <input type="text" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="{{ $ctrl.items[$ctrl.itemId-1].name }}" ng-model="$ctrl.data.name" required>
-                                  <small id="nameHelp" class="form-text text-muted"></small>
-                                </div>
-                                <div class="form-group">
-                                  <label for="InputDescription">Description</label>
-                                  <textarea class="form-control" id="InputDescription" rows="3" ng-model="$ctrl.data.description" placeholder="{{ $ctrl.items[$ctrl.itemId-1].description }}"></textarea>
-                                </div>
-                                <div class="form-group">
-                                  <label for="InputImageUrl">Image Url</label>
-                                  <input type="text" class="form-control" id="InputImageUrl" aria-describedby="imageUrlHelp" placeholder="{{ $ctrl.items[$ctrl.itemId-1].image_url }}" ng-model="$ctrl.data.image_url">
-                                  <small id="imageUrlHelp" class="form-text text-muted"></small>
-                                </div>
-                                <div class="form-check">
-                                  <label class="form-check-label">
-                                    Is this item for sale?
-                                    <input type="checkbox" class="form-check-input" ng-model="sale">
-                                  </label>
-                                </div>
-                              <div class="form-group" ng-show="sale">
-                                <label for="InputPrice">Price</label>
-                                <input type="number" class="form-control" id="InputPrice" aria-describedby="pricelHelp" placeholder="$" ng-model="$ctrl.data.price">
-                                <small id="pricelHelp" class="form-text text-muted"></small>
-                              </div>
-                              <hr>
-
-                              <!-- Dropdown checkboxes -->
-                              <label for="InputImageUrl">Groups</label>
-                              <div class="row padding">
-                                  <div ng-repeat="group in $ctrl.groups">
-
+                <div class="col-sm-12">
+                    <div class="thumbnail">
+                        <img src="{{ $ctrl.items[$ctrl.itemEditId].image_url }}" alt="..." height="150px">
+                        <div class="caption">
+                          <form ng-submit="$ctrl.updateItem($ctrl.itemId-1)">
+                            <div class="form-group">
+                              <label for="InputName">Name</label>
+                              <input type="text" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="{{ }}" ng-model="$ctrl.items[$ctrl.itemEditId].name" required>
+                              <small id="nameHelp" class="form-text text-muted"></small>
+                            </div>
+                            <div class="form-group">
+                              <label for="InputDescription">Description</label>
+                              <textarea class="form-control" id="InputDescription" rows="3" placeholder="{{ }}" ng-model="$ctrl.items[$ctrl.itemEditId].description"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="InputImageUrl">Image Url</label>
+                              <input type="text" class="form-control" id="InputImageUrl" aria-describedby="imageUrlHelp" placeholder="{{ }}" ng-model="$ctrl.items[$ctrl.itemEditId].image_url">
+                              <small id="imageUrlHelp" class="form-text text-muted"></small>
+                            </div>
+                            <!-- <div class="form-check">
+                              <label class="form-check-label">
+                                Is this item for sale?
+                                <input type="checkbox" class="form-check-input" ng-model="sale">
+                              </label>
+                            </div>
+                            <div class="form-group" ng-show="sale">
+                              <label for="InputPrice">Price</label>
+                              <input type="number" class="form-control" id="InputPrice" aria-describedby="pricelHelp" placeholder="$" ng-model="$ctrl.data.price">
+                              <small id="pricelHelp" class="form-text text-muted"></small>
+                            </div>
+                            <hr> -->
+                            <label for="InputImageUrl">Groups</label>
+                            <div class="row padding">
+                                <div ng-repeat="group in $ctrl.groups">
                                   <div class="col-xs-6 col-sm-3">
                                       <div class="checkbox">
                                           <label ng-if="$ctrl.groupEdit[group.id]" ><input type="checkbox" ng-model="$ctrl.data.group[group.id]"  checked>{{ group.name }}</label>
                                           <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" ng-model="$ctrl.data.group[group.id]" >{{ group.name }}</label>
                                       </div>
-                                      <!-- <div class="input-group">
-                                          <span class="input-group-addon"><input type="checkbox" aria-label="...">Test</span>
-                                          <input type="text" class="form-control" aria-label="...">
-                                      </div> -->
-                                      <!-- /input-group -->
                                   </div>
-                                  </div>
-                              </div>
-
-                                <button type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
-                                <a href="#" class="btn btn-danger bottom-right" role="button" data-dismiss="modal">Cancel</a>
-                              </form>
-
-
-
+                                </div>
                             </div>
+                            <button type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+                            <a href="#" class="btn btn-danger bottom-right" role="button" data-dismiss="modal">Cancel</a>
+                          </form>
                         </div>
                     </div>
-                <!-- </div> -->
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-
-                </div> -->
+                </div>
             </div>
-
         </div>
     </div>
 </div>
