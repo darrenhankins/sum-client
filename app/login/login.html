@@ -23,9 +23,9 @@
     </div>
     <form name="loginForm" ng-submit="$ctrl.login()">
     <div class="panel-body">
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
 
+        <!-- <div class="form-group">
+            <label for="inputEmail">Email address</label>
             <input
               type="email"
               class="form-control"
@@ -34,27 +34,37 @@
               placeholder="Email"
               minlength = "5"
               ng-model="$ctrl.loginForm.email"
-              required>
-
+              required> -->
               <!-- <div ng-messages="$ctrl.loginForm.email.$error">
               <p ng-message="minlength">Your name is to short.</p>
               <p ng-message="maxlength">Your name is to long.</p>
               <p ng-message="required">You did not enter a field.</p>
               </div> -->
               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
+        <!-- </div> -->
 
+        <div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            ng-model="$ctrl.loginForm.email">
+          <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block" required>Enter a valid email.</p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+            <label for="inputPassword">Password</label>
             <input
               type="password"
+              name="password"
               class="form-control"
               id="inputPassword"
-              placeholder="Password"
               minlength = "5"
               maxlength = "20"
               ng-model="$ctrl.loginForm.password"
               required>
+              <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block" required>Enter a password between 5-20 characters.</p>
 
               <!-- <div ng-messages="$ctrl.loginForm.password.$error" ng-if="$ctrl.loginForm.password.$dirty" style="color:maroon" role="alert"> -->
               <!-- <div ng-message="required">You did not enter a field</div> -->

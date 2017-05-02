@@ -5,8 +5,8 @@
               <span class="sr-only">Toggle Navigation</span>
               <span class="fa fa-chevron-down"></span> <b>Menu</b>
           </button>
-          <img src="../images/sum-app-logo.png" width="300px">
-          <a class="tagline">Share ( U+Me )</a>
+            <img src="../images/sum-app-logo.png" width="300px">
+            <a class="tagline">Share ( U+Me )</a>
             <!-- <a class="navbar-brand" href="#">Sum (Share U + M)</a> -->
         </div>
         <div class="collapse navbar-collapse" id="navCollapse">
@@ -20,37 +20,66 @@
     </div>
 </nav>
 <main class="container">
-<div class="panel-body-groups">
-    <h2>Friends</h2>
-    <span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.friendEditDropdown" ng-click="$ctrl.editFriend()"></span>
-</div>
-<!-- <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]"> -->
-<div class="group-dropdown" ng-show="$ctrl.friendEditDropdown">
-  <form ng-submit="$ctrl.addFriend()">
+    <div class="panel-body-groups">
+        <h2>Friends</h2>
+        <span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.friendEditDropdown && !$ctrl.friendEdit1" ng-click="$ctrl.editFriend()"></span>
+    </div>
+    <!-- <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]"> -->
+    <div class="group-dropdown" ng-show="$ctrl.friendEditDropdown">
+        <form id="addFriendForm" name="addFriendForm" ng-submit="$ctrl.addFriend()">
+            <!-- <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="inputName"
+          aria-describedby="emailHelp"
+          placeholder="Name"
+          ng-model="$ctrl.data.name"
+          required>
 
-    <div class="form-group">
-        <!-- <label for="inputName">Name</label> -->
-        <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp" placeholder="Name" ng-model="$ctrl.data.name" required>
         <small id="emailHelp" class="form-text text-muted"></small>
-    </div>
-    <div class="form-group">
-        <!-- <label for="inputName">Name</label> -->
-        <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email" ng-model="$ctrl.data.email" required>
+    </div> -->
+
+            <!-- NAME -->
+            <div class="form-group" ng-class="{ 'has-error' : addFriendForm.name.$invalid && !addFriendForm.name.$pristine }">
+                <!-- <label>Name*</label> -->
+                <input type="text" name="name" placeholder="Name" class="form-control" ng-model="$ctrl.data.name" required>
+                <p ng-show="addFriendForm.name.$invalid && !addFriendForm.name.$pristine" class="help-block">Name required</p>
+            </div>
+            <!-- <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          aria-describedby="emailHelp"
+          placeholder="Email"
+          ng-model="$ctrl.data.email"
+          required>
+
         <small id="emailHelp" class="form-text text-muted"></small>
-    </div>
+    </div> -->
 
-    <div class="">
+            <!-- EMAIL -->
+            <div class="form-group" ng-class="{ 'has-error' : addFriendForm.email.$invalid && !addFriendForm.email.$pristine }">
+                <!-- <label>Email*</label> -->
+                <input type="email" name="email" placeholder="Email" class="form-control" ng-model="$ctrl.data.email" required>
+                <p ng-show="addFriendForm.email.$invalid && !addFriendForm.email.$pristine" class="help-block" required>Enter a valid email</p>
+            </div>
 
-        <a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editFriend()">Cancel</a>
-        <button type="submit" class="btn btn-success bottom-right">Submit</button>
-        <!-- <a href="/profile/friends" class="btn btn-success bottom-right" role="button">Submit</a> -->
-        <!-- <a href="#" class="btn btn-success bottom-right" role="button">Save</a> -->
-        <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
+            <div class="">
+                <a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editFriend()">Cancel</a>
+                <button type="submit" class="btn btn-success bottom-right" data-toggle="modal" data-target="#pleaseWaitDialog" ng-disabled="addFriendForm.$invalid">Submit</button>
+
+
+                <!-- <button type="submit" class="btn btn-success bottom-right">Submit</button> -->
+                <!-- <a href="/profile/friends" class="btn btn-success bottom-right" role="button">Submit</a> -->
+                <!-- <a href="#" class="btn btn-success bottom-right" role="button">Save</a> -->
+                <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
+            </div>
+        </form>
     </div>
-  </form>
-</div>
-<div ng-repeat="friend in $ctrl.friends">
-    <!-- <div class="panel panel-default">
+    <div ng-repeat="friend in $ctrl.friends">
+        <!-- <div class="panel panel-default">
         <div class="panel-body">
             <div>{{ friend.name }}</div>
             <div><a href="#" class="btn btn-primary right" role="button">edit</a></div>
@@ -63,40 +92,49 @@
       <div class="">{{ friend.email }}
     <a href="#" class="btn btn-primary bottom-right" role="button">edit</a>
 </div> -->
-<div class="panel panel-default">
-    <div class="panel-body">
-      <div class="friend-padding">
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <!-- <div class="panel-body"> -->
+                <div class="friend-padding">
 
-        {{ friend.name }}
-        <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)"></span>
+                    {{ friend.name }}
+                    <!-- <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)"></span> -->
+                    <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.friendEditDropdown && !$ctrl.friendEdit1" ng-click="$ctrl.editFriendInfo(friend.id)"></span>
 
-        <br>
-        Email: <span class="bootstrap-color-primary">{{ friend.email }}</span>
+                    <br> Email: <span class="bootstrap-color-primary">{{ friend.email }}</span>
+                </div>
+
+                <!-- <div class="panel-body"> -->
+                <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]">
+                  <form name="updateFriendForm" ng-submit="$ctrl.updateFriend()">
+                      <div class="form-group" ng-class="{ 'has-error' : updateFriendForm.name.$invalid && !updateFriendForm.name.$pristine }">
+                          <!-- <label for="inputName">Name</label> -->
+                          <input type="text" name="name" placeholder="Name" class="form-control" ng-model="$ctrl.data.name" required>
+                          <!-- <input type="text" name="name" placeholder="Name" class="form-control" id="inputName" aria-describedby="nameHelp"  required> -->
+                          <p ng-show="updateFriendForm.name.$invalid && !updateFriendForm.name.$pristine" class="help-block">Name required</p>
+                          <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+                      </div>
+                      <div class="form-group" ng-class="{ 'has-error' : updateFriendForm.email.$invalid && !updateFriendForm.email.$pristine }">
+                          <!-- <label for="inputEmail">Email address</label> -->
+                          <input type="email" name="email" placeholder="Email" class="form-control" ng-model="$ctrl.data.email" required>
+                          <!-- <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email" required> -->
+                          <p ng-show="updateFriendForm.email.$invalid && !updateFriendForm.email.$pristine" class="help-block">Enter a valid email</p>
+                          <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+                      </div>
+                      <div class="">
+                          <!-- <a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editFriend()">Cancel</a> -->
+
+
+                          <a href="#" class="btn btn-danger bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Cancel</a>
+                          <button type="submit" class="btn btn-success bottom-right" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="$ctrl.friendEdit[friend.id]" ng-disabled="updateFriendForm.$invalid">Submit</button>
+                          <!-- <a href="#" class="btn btn-success bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Save</a> -->
+                          <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
+                      </div>
+                  </form>
+              </div>
+            </div>
         </div>
+        <!-- </div> -->
 
-    <!-- <div class="panel-body"> -->
-
-    <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]">
-    <div class="form-group">
-        <!-- <label for="inputName">Name</label> -->
-        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name">
-        <small id="emailHelp" class="form-text text-muted"></small>
     </div>
-      <div class="form-group">
-          <!-- <label for="inputEmail">Email address</label> -->
-          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
-          <small id="emailHelp" class="form-text text-muted"></small>
-      </div>
-    </div>
-    <div class="">
-
-    <a href="#" class="btn btn-danger bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Cancel</a>
-    <a href="#" class="btn btn-success bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Save</a>
-    <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->
-  </div>
-      </div>
-</div>
-<!-- </div> -->
-
-</div>
 </main>

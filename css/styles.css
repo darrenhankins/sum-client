@@ -3,6 +3,10 @@
   border-width: 1px;
   border-color: lightgrey;*/
 }
+/* removes the autofill yellow color from a form */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
 .col-sm-6.min-width {
   max-width: 100%;
 }

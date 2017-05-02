@@ -14,6 +14,7 @@
       vm.user_id = $stateParams.id;
 
       vm.$onInit = function(){
+
       //   vm.friends = [{
       //     "id": 1,
       //     "name": "Paul Kowalkski",
@@ -41,8 +42,11 @@
     };
 
     vm.resetForm = function(){
-      vm.data.name = "";
-      vm.data.email = "";
+      if (!$scope.addFriendForm.$pristine) {
+        vm.data.name = "";
+        vm.data.email = "";
+      }
+      $scope.addFriendForm.$setPristine(); //reset Form
     }
 
     vm.friendEdit = [];
@@ -50,9 +54,11 @@
        if (vm.friendEdit[id] == false || !vm.friendEdit[id]){
          console.log(vm.friendEdit[id]);
          vm.friendEdit[id] = true;
+         vm.friendEdit1 = true;
        } else {
          console.log(vm.friendEdit[id]);
          vm.friendEdit[id]= false;
+         vm.friendEdit1 = false;
        }
      }
 
@@ -81,12 +87,17 @@
          });
        }
 
-     vm.editFriend = function (){
+     vm.editFriend = function(){
        if (vm.friendEditDropdown == false || !vm.friendEditDropdown ){
          vm.friendEditDropdown = true;
        } else {
+         vm.resetForm();
          vm.friendEditDropdown= false;
        }
+     }
+
+     vm.updateFriend = function(){
+       console.log("Updated Friend");
      }
 
    }

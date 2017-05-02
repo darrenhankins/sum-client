@@ -18,3 +18,10 @@
 ```
 
 ```
+
+### Form Validation
+- https://scotch.io/tutorials/angularjs-form-validation#demo
+- http://plnkr.co/edit/lCRwhj?p=preview
+
+#### Testing
+- `$ lite-server`
