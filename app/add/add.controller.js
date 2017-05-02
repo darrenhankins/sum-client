@@ -7,11 +7,13 @@
     .module('sumApp')
     .controller('AddController', AddController);
 
-    function AddController($scope, $http, $location, $stateParams) {
+    function AddController($scope, $http, $location, $stateParams, $state) {
       console.log('This is the AddController...');
       const vm = this;
 
-      vm.user_id = $stateParams.id;
+      console.log("USER_ID= "+$stateParams.user_id);
+
+      vm.user_id = $stateParams.user_id;
 
       vm.$onInit = function() {
         // vm.data = [];
@@ -49,7 +51,12 @@
           $http.post(`${API_URL}/user/${vm.user_id}/items`, vm.data)
           .then(function(data) {
             console.log(data);
-            $location.url(`/profile/${vm.user_id}/items`);
+
+            $state.go(`items`, {
+                user_id: vm.user_id
+            });
+
+            // $location.url(`/profile/${vm.user_id}/items`);
           }, function() {
             console.log('NewItem Failed!');
           });

@@ -7,11 +7,13 @@
         .module('sumApp')
         .controller('GroupsController', GroupsController);
 
-    function GroupsController($scope, $http, $stateParams) {
+    function GroupsController($scope, $http, $stateParams, $state) {
         console.log("This is the GroupsController...");
         const vm = this;
 
-        vm.user_id = $stateParams.id;
+        console.log("USER_ID= "+$stateParams.user_id);
+
+        vm.user_id = $stateParams.user_id;
 
         vm.$onInit = function() {
             // vm.groups = [{

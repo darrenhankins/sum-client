@@ -11,10 +11,10 @@
         </div>
         <div class="collapse navbar-collapse" id="navCollapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">Logout</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/items">Items</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/friends">Friends</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/groups">Groups</a></li>
+              <li><a href="/">Logout</a></li>
+              <li><a ui-sref="items({ user_id: $ctrl.user_id })">Items</a></li>
+              <li><a ui-sref="friends({ user_id: $ctrl.user_id })">Friends</a></li>
+              <li><a ui-sref="groups({ user_id: $ctrl.user_id })">Groups</a></li>
             </ul>
         </div>
     </div>
@@ -28,9 +28,15 @@
 <div class="group-dropdown" ng-show="$ctrl.groupEditDropdown">
 
 <form ng-submit="$ctrl.newGroup()">
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : addFriendForm.name.$invalid && !addFriendForm.name.$pristine }">
         <!-- <label for="inputName">Name</label> -->
-        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Name" ng-model="$ctrl.data.name" required >
+        <input
+          type="text"
+          class="form-control"
+          id="inputName"
+          aria-describedby="nameHelp"
+          placeholder="Name"
+          ng-model="$ctrl.data.name" required >
         <small id="emailHelp" class="form-text text-muted"></small>
     </div>
 
@@ -70,7 +76,7 @@
                 </div>
             </div>
             <!-- <a href="#" ng-if="!$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-primary right" role="button">Edit</a> -->
-            <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-danger right" role="button">Cancel</a>
+            <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id); " class="btn btn-danger right" role="button">Cancel</a>
             <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-success right" role="button">Save</a>
 
             <!-- /.row -->

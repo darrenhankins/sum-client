@@ -13,6 +13,9 @@
       .state({
         name: 'login',
         component: 'login',
+        params: {
+          user_id: null
+        },
         url: '/'
       })
       .state({
@@ -36,14 +39,20 @@
         name: 'items',
         component: 'items',
         params: {
-          dog: "Fred"
+          user_id: null
         },
-        url: '/profile/:id/items'
+        // url: '/profile/:id/items'
+        url: '/items'
       })
       .state({
         name: 'add',
         component: 'add',
-        url: '/profile/:id/add'
+        params: {
+          user_id: null
+        },
+        // url: '/profile/:id/add'
+        url: '/add'
+
       })
       .state({
         name: 'sendemail',
@@ -53,12 +62,20 @@
       .state({
         name: 'groups',
         component: 'groups',
-        url: '/profile/:id/groups'
+        params: {
+          user_id: null
+        },
+        url: '/groups'
+        // url: '/profile/:id/groups'
       })
       .state({
         name: 'friends',
         component: 'friends',
-        url: '/profile/:id/friends'
+        params: {
+          user_id: null
+        },
+        url: '/friends'
+        // url: '/profile/:id/friends'
       });
 
       $urlRouterProvider.otherwise('/');

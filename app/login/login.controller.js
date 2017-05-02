@@ -7,9 +7,15 @@
         .module('sumApp')
         .controller('LoginController', LoginController);
 
-    function LoginController($scope, $http, $location) {
+    function LoginController($scope, $http, $location, $state, $stateParams) {
         console.log('Login controller....');
         const vm = this;
+
+
+        $stateParams.user_id = null;
+        vm.user_id = $stateParams.user_id;
+
+        console.log("USER_ID= "+$stateParams.user_id);
 
         vm.$onInit = function() {
           vm.loginFailed = false;
@@ -39,7 +45,13 @@
                       console.log(response.member);
                       vm.message = response.message;
                       vm.loginFailed = false;
-                      $location.url(`/profile/${response.member.id}/items`);
+
+
+                      $state.go(`items`, {
+                          user_id: response.member.id
+                      });
+
+                      // $location.url(`/profile/${response.member.id}/items`);
                       break;
                     case 'failure 1':
                       vm.message = response.message;

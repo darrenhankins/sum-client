@@ -12,9 +12,13 @@
         <div class="collapse navbar-collapse" id="navCollapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Logout</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/items">Items</a></li>
+                <li><a ui-sref="items({ user_id: $ctrl.user_id })">Items</a></li>
+                <li><a ui-sref="friends({ user_id: $ctrl.user_id })">Friends</a></li>
+                <li><a ui-sref="groups({ user_id: $ctrl.user_id })">Groups</a></li>
+
+                <!-- <li><a href="/profile/{{ $ctrl.user_id }}/items">Items</a></li>
                 <li><a href="/profile/{{ $ctrl.user_id }}/friends">Friends</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/groups">Groups</a></li>
+                <li><a href="/profile/{{ $ctrl.user_id }}/groups">Groups</a></li> -->
             </ul>
         </div>
     </div>
@@ -23,7 +27,8 @@
 <div class="col-sm-12 panel-body-groups">
     <h2>Your Items</h2>
     <div class="add-item-button">
-    <a href="/profile/{{ $ctrl.user_id }}/add" class="btn btn-primary-unemailed" role="button" ng-click="$ctrl.setItemId(item.id)">Add Item</a>
+    <a ui-sref="add({ user_id: $ctrl.user_id })" class="btn btn-primary-unemailed" role="button" ng-click="$ctrl.setItemId(item.id)">Add Item</a>
+    <!-- <a href="/profile/{{ $ctrl.user_id }}/add" class="btn btn-primary-unemailed" role="button" ng-click="$ctrl.setItemId(item.id)">Add Item</a> -->
   </div>
 
 </div>

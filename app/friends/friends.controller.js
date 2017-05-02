@@ -7,11 +7,13 @@
     .module('sumApp')
     .controller('FriendsController', FriendsController);
 
-    function FriendsController($scope, $http, $location, $stateParams) {
+    function FriendsController($scope, $http, $location, $stateParams, $state) {
       console.log('This is the FriendsController...');
       const vm = this;
 
-      vm.user_id = $stateParams.id;
+      console.log("USER_ID= "+$stateParams.user_id);
+
+      vm.user_id = $stateParams.user_id;
 
       vm.$onInit = function(){
 
@@ -47,15 +49,29 @@
         vm.data.email = "";
       }
       $scope.addFriendForm.$setPristine(); //reset Form
+      // if (!$scope.updateFriendForm.$pristine) {
+      //   vm.data.name = "";
+      //   vm.data.email = "";
+      // }
+      // $scope.updateFriendForm.$setPristine();
+    }
+    vm.resetForm2 = function(){
+      if (!$scope.updateFriendForm.$pristine) {
+        vm.data.name = "";
+        vm.data.email = "";
+      }
+      $scope.updateFriendForm.$setPristine();
     }
 
     vm.friendEdit = [];
      vm.editFriendInfo = function (id){
        if (vm.friendEdit[id] == false || !vm.friendEdit[id]){
+
          console.log(vm.friendEdit[id]);
          vm.friendEdit[id] = true;
          vm.friendEdit1 = true;
        } else {
+        //  vm.resetForm2();
          console.log(vm.friendEdit[id]);
          vm.friendEdit[id]= false;
          vm.friendEdit1 = false;
@@ -96,7 +112,26 @@
        }
      }
 
-     vm.updateFriend = function(){
+     vm.updateFriend = function(id){
+      //  vm.resetForm2();
+      console.log("Member ID"+$scope.member_id);
+       let data = [];
+       data.user_id =  $stateParams.id;
+       data.friend_id = id;
+       data.friend_name = vm.friend_edit[id].name;
+       data.friend_email = vm.friend_edit[id].email;
+       console.log(data);
+      //  $http.put(`${API_URL}/user/${vm.user_id}/friends/${vm.friend_id}`, vm.data)
+      //  .then(function(data) {
+      //    console.log(data);
+      //    vm.getFriends();
+      //    vm.friendEditDropdown = false;
+      //    vm.resetForm();
+       //
+      //   //  $location.url('/profile/friends');
+      //  }, function() {
+      //    console.log('NewItem Failed!');
+      //  });
        console.log("Updated Friend");
      }
 

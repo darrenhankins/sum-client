@@ -65,8 +65,8 @@
     </div>
     </div>
 </div> -->
-
   <button type="submit" class="btn btn-success">Submit</button>
-  <a href="/profile/{{ $ctrl.user_id }}/items" class="btn btn-danger bottom-right" role="button">Cancel</a>
+  <a ui-sref="items({ user_id: $ctrl.user_id })" class="btn btn-danger bottom-right" role="button">Cancel</a>
+  <!-- <a href="/profile/{{ $ctrl.user_id }}/items" class="btn btn-danger bottom-right" role="button">Cancel</a> -->
 </form>
 </main>

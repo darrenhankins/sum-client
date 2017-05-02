@@ -7,16 +7,18 @@
         .module('sumApp')
         .controller('ItemsController', ItemsController);
 
-    function ItemsController($scope, $http, $location, $stateParams) {
+    function ItemsController($scope, $http, $location, $stateParams, $state) {
         console.log("This is the ItemsController...");
         const vm = this;
 
         // $scope.complete = function(content) {
         //   console.log(content); // process content
         // }
+        console.log("USER_ID= "+$stateParams.user_id);
         console.log($stateParams.id);
         console.log($stateParams.dog);
-        vm.user_id = $stateParams.id;
+        // vm.user_id = $stateParams.id;
+        vm.user_id = $stateParams.user_id;
 
 
         vm.$onInit = function() {
