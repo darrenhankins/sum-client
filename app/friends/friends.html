@@ -124,8 +124,8 @@
                       <div class="">
                           <!-- <a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editFriend()">Cancel</a> -->
 
-
-                          <a href="#" class="btn btn-danger bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Cancel</a>
+                          <a href="#" class="btn btn-danger bottom-left" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.deleteFriend(friend.id)">Delete</a>
+                          <a href="#" class="btn btn-warning bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Cancel</a>
                           <button type="submit" class="btn btn-success bottom-right" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="$ctrl.friendEdit[friend.id]" ng-disabled="updateFriendForm.$invalid">Submit</button>
                           <!-- <a href="#" class="btn btn-success bottom-right" role="button" ng-if="$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Save</a> -->
                           <!-- <a href="#" class="btn btn-primary bottom-right" role="button" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)">Edit</a> -->

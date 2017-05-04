@@ -11,10 +11,10 @@
         </div>
         <div class="collapse navbar-collapse" id="navCollapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">Logout</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/items">Items</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/friends">Friends</a></li>
-                <li><a href="/profile/{{ $ctrl.user_id }}/groups">Groups</a></li>
+              <li><a href="/">Logout</a></li>
+              <li><a ui-sref="items({ user_id: $ctrl.user_id })">Items</a></li>
+              <li><a ui-sref="friends({ user_id: $ctrl.user_id })">Friends</a></li>
+              <li><a ui-sref="groups({ user_id: $ctrl.user_id })">Groups</a></li>
             </ul>
         </div>
     </div>
