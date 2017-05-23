@@ -12,6 +12,11 @@
         const vm = this;
 
         vm.$onInit = function() {
+
+          vm.data = {};
+          vm.data.name = '';
+          vm.data.email = '';
+
           if ($stateParams.user_id == null){
             $location.url('/login');
           } else {
@@ -49,13 +54,20 @@
                   vm.data.name = "";
                   vm.data.email = "";
               }
+              vm.data.name = '';
+              vm.data.email = '';
               $scope.addFriendForm.$setPristine(); //reset Form
+
+              // vm.friend_edit[id].email = '';
+              // $scope.updateFriendForm.$setPristine();
               // if (!$scope.updateFriendForm.$pristine) {
               //   vm.data.name = "";
               //   vm.data.email = "";
               // }
               // $scope.updateFriendForm.$setPristine();
           }
+
+
           vm.resetForm2 = function() {
               if (!$scope.updateFriendForm.$pristine) {
                   vm.data.name = "";
@@ -67,15 +79,23 @@
           vm.friendEdit = [];
           vm.editFriendInfo = function(id) {
               if (vm.friendEdit[id] == false || !vm.friendEdit[id]) {
-
-                  console.log(vm.friendEdit[id]);
+                  console.log("Friend Edit ID:", vm.friendEdit[id]);
                   vm.friendEdit[id] = true;
-                  vm.friendEdit1 = true;
+                  vm.friendEditing = true;
               } else {
                   //  vm.resetForm2();
-                  console.log(vm.friendEdit[id]);
+                  console.log("Friend Edit ID:", vm.friendEdit[id]);
                   vm.friendEdit[id] = false;
-                  vm.friendEdit1 = false;
+                  vm.friendEditing = false;
+              }
+          }
+
+          vm.editFriend = function() {
+              if (vm.friendEditDropdown == false || !vm.friendEditDropdown) {
+                  vm.friendEditDropdown = true;
+              } else {
+                  vm.resetForm();
+                  vm.friendEditDropdown = false;
               }
           }
 
@@ -114,14 +134,7 @@
               console.log("Added Friend");
           }
 
-          vm.editFriend = function() {
-              if (vm.friendEditDropdown == false || !vm.friendEditDropdown) {
-                  vm.friendEditDropdown = true;
-              } else {
-                  vm.resetForm();
-                  vm.friendEditDropdown = false;
-              }
-          }
+
 
           vm.deleteFriend = function(id) {
             $http.delete(`${API_URL}/user/${$stateParams.user_id}/friends/${id}`)
@@ -129,7 +142,7 @@
               console.log(data);
               vm.getFriends();
               vm.resetForm();
-              vm.friendEdit1 = false;
+              vm.friendEditing = false;
               vm.friendEditDropdown = false;
             }, function() {
                 console.log('Delete Friend Failed!');
@@ -140,14 +153,14 @@
           vm.updateFriend = function(id) {
               vm.friendEdit[id] = false;
               vm.friendEditDropdown = false;
-              vm.friendEdit1 = false;
+              vm.friendEditing = false;
               vm.friend_edit[id].friend_id = id;
               console.log(vm.friend_edit[id]);
               $http.patch(`${API_URL}/user/${$stateParams.user_id}/friends/${id}`, vm.friend_edit[id])
                   .then(function(data) {
                       console.log(data);
                       vm.getFriends();
-                      vm.resetForm();
+                      vm.resetForm(id);
                       vm.friendEditDropdown = false;
                   }, function() {
                       console.log('Update Friend Failed!');

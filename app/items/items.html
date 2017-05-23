@@ -127,7 +127,7 @@
                     <div class="thumbnail">
                         <img src="{{ $ctrl.items[$ctrl.itemEditId].image_url }}" alt="..." height="150px">
                         <div class="caption">
-                          <form ng-submit="$ctrl.updateItem($ctrl.itemId-1)">
+                          <form name="updateItemForm" id="updateItemForm" ng-submit="$ctrl.updateItem($ctrl.itemEditId)">
                             <div class="form-group">
                               <label for="InputName">Name</label>
                               <input type="text" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="{{ }}" ng-model="$ctrl.items[$ctrl.itemEditId].name" required>
@@ -165,8 +165,9 @@
                                   </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
-                            <a href="#" class="btn btn-danger bottom-right" role="button" data-dismiss="modal">Cancel</a>
+                            <a href="#" class="btn btn-danger bottom-left" role="button" ng-click="$ctrl.deleteItem($ctrl.itemEditId)">Delete</a>
+                            <a href="#" class="btn btn-warning bottom-right" role="button" data-dismiss="modal">Cancel</a>
+                            <button type="submit" class="btn btn-success bottom-right" data-dismiss="modal">Submit</button>
                           </form>
                         </div>
                     </div>

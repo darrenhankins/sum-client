@@ -12,6 +12,9 @@
         const vm = this;
 
         vm.$onInit = function() {
+          vm.data = {};
+          vm.data.name = '';
+
           if ($stateParams.user_id == null){
             $location.url('/login');
           } else {
@@ -33,8 +36,11 @@
         if ($stateParams.user_id == null) {
             $location.url('/login');
         } else {
+
             vm.resetForm = function(){
-              // vm.data.name = "";
+              console.log("Reset Form");
+              vm.data.name = '';
+              $scope.addGroupForm.$setPristine();
             }
 
             // vm.temporyArrFn = function (){
@@ -68,25 +74,50 @@
               //   }
               // }
               // let id1 = id-1;
-              console.log(id);
-              vm.groups[0].friends[id-1].checked = false;
-              console.log("unCHECK");
-              console.log(vm.groups[0].friends[id-1]);
+              console.log("Checkbox ID:", id-1);
+              // vm.groups[0].friends[id-1].checked = false;
+              // console.log("Checked:", vm.groups[0].friends[id-1].checked);
             }
 
-             vm.groupEdit = {};
-             vm.editGroupInfo = function (id) {
-               if (vm.groupEdit[id] == false || !vm.groupEdit[id]){
-                 vm.displayGroupInfo(id);
-                 vm.groupEdit[id] = true;
+            //  vm.groupEdit = [];
+            //  vm.editGroupInfo = function (id) {
+            //    console.log("Group Edit ID:", id);
+            //    if (vm.groupEdit[id] == false || !vm.groupEdit[id]){
+            //      vm.displayGroupInfo(id);
+            //      vm.groupEdit[id] = true;
+            //    } else {
+            //      console.log(vm.groupEdit[id]);
+            //      vm.groupEdit[id]= false;
+            //    }
+            //  }
+
+             vm.groupEdit = [];
+             vm.editGroupInfo = function(id) {
+                 if (vm.groupEdit[id] == false || !vm.groupEdit[id]) {
+                     console.log("Group Edit ID:",  id);
+                     vm.groupEdit[id] = true;
+                     vm.groupEditing = true;
+                 } else {
+                     //  vm.resetForm2();
+                     console.log("Group Edit ID:",  id);
+                     vm.groupEdit[id] = false;
+                     vm.groupEditing = false;
+                 }
+             }
+
+             vm.editGroup = function () {
+               if (vm.groupEditDropdown == false || !vm.groupEditDropdown ){
+                 vm.groupEditDropdown = true;
                } else {
-                 console.log(vm.groupEdit[id]);
-                 vm.groupEdit[id]= false;
+                 vm.resetForm();
+                 vm.groupEditDropdown= false;
                }
              }
 
+
             vm.displayGroupInfo = function(id) {
-              console.log("Group ID:", id);
+              vm.groupId = id;
+              console.log("Group ID:", vm.groupId);
               var currentGroup = [];
               // currentFriendsInGroup
               // allFriendsOfUser
@@ -103,15 +134,6 @@
               // }
             }
 
-            vm.names = [{
-              "Darren": true,
-              "Doug": false,
-              "David": false,
-              "Ken": false,
-              "Jeff": true,
-              "Robert": true
-            }];
-
              vm.getGroups = function() {
                vm.groupTemp = {};
                $http.get(`${API_URL}/user/${$stateParams.user_id}/groups`)
@@ -125,34 +147,56 @@
                        return l === m ? 0 : l > m ? 1 : -1;
                    });
 
-                   vm.allFriends = response.data[1];
-                   console.log("All Friends", vm.allFriends);
+                   vm.friends = response.data[1];
+                  //  vm.oneFriends = response.data[1][1].name;
+                  console.log("All Friends, Total Number:", vm.friends.length);
+                   console.log("All Friends:", vm.friends);
 
-                   vm.allGroups = response.data[0];
-                   console.log("All Groups", vm.allGroups);
+                  //  vm.allGroups = response.data[0];
+                  //  console.log("All Groups:", vm.allGroups);
+                   //
+                  //  vm.groupName = response.data[0][1].name;
+                  //  console.log("Group Name:", vm.groupName);
 
-                   vm.groupName = response.data[0][0].name;
-                   console.log("Group Name", vm.groupName);
-
-                   vm.friendsInGroup0 = response.data[0][1].friend;
-                   console.log("Friends In Group Index 1", vm.friendsInGroup0);
+                   vm.friendsInGroup = response.data[0][0].friend;
+                   console.log("Friends In Group 0, Total Number:", vm.friendsInGroup.length);
+                   console.log("Friends In Group 0:", vm.friendsInGroup);
                    // console.log("currentFriendsInGroup", vm.currentFriendsInGroup[1].friend[0]);
+
+                   vm.tempGroup1 = [{
+                     "friend0": [{
+                       "id": 1,
+                       "name": "Darren",
+                       "checked": false
+                     }],
+                     "friend1": [{
+                       "id": 2,
+                       "name": "Paul",
+                       "checked": true
+                     }],
+                     "friend2": [{
+                       "id": 3,
+                       "name": "Jesse",
+                       "checked": true
+                     }]
+                   }];
+
+                  //  vm.groups = [{
+                  //    "id": 1,
+                  //    "name": "Family",
+                  //    "friends": [{
+                  //        "id": 1,
+                  //        "name": "Jim",
+                  //        "checked": true
+                  //    }]
+                  //  }];
 
                });
              }
 
-             vm.editGroup = function (id) {
-               if (vm.groupEditDropdown == false || !vm.groupEditDropdown ){
-                 vm.groupEditDropdown = true;
-               } else {
-                 vm.groupEditDropdown= false;
-                 vm.resetForm();
-               }
-             }
-
              vm.newGroup = function() {
                vm.data.user_id = $stateParams.user_id;
-               console.log(vm.data);
+               console.log("New Group:", vm.data);
                $http.post(`${API_URL}/user/${$stateParams.user_id}/groups`, vm.data)
                .then(function(data) {
                    console.log(data);
@@ -166,14 +210,15 @@
              }
 
              vm.updateGroup = function(index) {
-               console.log(vm.names);
-               console.log("group Index: "+index);
+               console.log("Group Update Index: ", index);
                // name didn't change
                if (!vm.groupTemp.name) {
                  vm.groupTemp.name = vm.groups[index].name;
                }
-               console.log(vm.groupTemp);
                var id = vm.groups[index].id;
+               vm.groupEdit[id] = false;
+               vm.groupEditDropdown = false;
+               vm.groupEditing = false;
                $http.patch(`${API_URL}/user/${$stateParams.user_id}/groups/${id}`, vm.groupTemp)
                  .then(function(data) {
                      console.log(data);
@@ -192,12 +237,16 @@
                .then(function(data) {
                  console.log(data);
                  vm.getGroups();
+                 vm.resetForm();
+                 vm.groupEditing = false;
+                 vm.groupEditDropdown = false;
                }, function() {
                    console.log('Delete Group Failed!');
                });
                console.log("Deleted Group");
              }
-             }
+
+            }
           }
 
          function getHostUrl() {

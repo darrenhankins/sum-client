@@ -22,7 +22,7 @@
 <main class="container">
     <div class="panel-body-groups">
         <h2>Friends</h2>
-        <span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.friendEditDropdown && !$ctrl.friendEdit1" ng-click="$ctrl.editFriend()"></span>
+        <span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.friendEditDropdown && !$ctrl.friendEditing" ng-click="$ctrl.editFriend()"></span>
     </div>
     <!-- <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]"> -->
     <div class="group-dropdown" ng-show="$ctrl.friendEditDropdown">
@@ -99,7 +99,7 @@
 
                     {{ friend.name }} - {{ friend.id }}
                     <!-- <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.friendEdit[friend.id]" ng-click="$ctrl.editFriendInfo(friend.id)"></span> -->
-                    <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.friendEditDropdown && !$ctrl.friendEdit1" ng-click="$ctrl.editFriendInfo(friend.id)"></span>
+                    <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.friendEditDropdown && !$ctrl.friendEditing" ng-click="$ctrl.editFriendInfo(friend.id)"></span>
 
                     <br> Email: <span class="bootstrap-color-primary">{{ friend.email }}</span>
                 </div>

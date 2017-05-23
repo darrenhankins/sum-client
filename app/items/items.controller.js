@@ -80,7 +80,11 @@
             }
 
             vm.updateItem = function(id) {
-                console.log("Update Item");
+              console.log("Update Item:", id);
+            }
+
+            vm.deleteItem = function(id) {
+              console.log("Deleted Item:", id);
             }
 
             vm.itemEdit = [];
@@ -95,12 +99,12 @@
             }
 
             vm.setItemId = function(id) {
-                console.log(id);
+                console.log("Item ID:", id);
                 vm.itemId = id;
             }
 
             vm.setItemEditId = function(id) {
-                console.log(id);
+                console.log("Item Edit ID:", id);
                 vm.itemEditId = id;
             }
             // https://sum-app.herokuapp.com/user/1/items

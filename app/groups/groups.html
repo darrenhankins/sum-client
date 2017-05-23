@@ -22,7 +22,7 @@
 <main class="container">
 <div class="panel-body-groups">
     <h2>Groups</h2>
-    <span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.groupEditDropdown" ng-click="$ctrl.editGroup()"></span>
+    <span class="glyphicon glyphicon-plus bottom-right-groups" aria-hidden="true" ng-if="!$ctrl.groupEditDropdown && !$ctrl.groupEditing" ng-click="$ctrl.editGroup()"></span>
 </div>
 <!-- <div class="friend-dropdown" ng-show="$ctrl.friendEdit[friend.id]"> -->
 <div class="group-dropdown" ng-show="$ctrl.groupEditDropdown">
@@ -35,7 +35,7 @@
           name="inputName"
           class="form-control"
           placeholder="Name"
-          ng-model="$ctrl.data.name" required >
+          ng-model="$ctrl.data.name" required>
           <p ng-show="addGroupForm.inputName.$invalid && !addGroupForm.inputName.$pristine" class="help-block">Name required</p>
     </div>
 
@@ -63,7 +63,8 @@
                     <p ng-show="updateGroupForm.name.$invalid && !updateGroupForm.name.$pristine" class="help-block">Name required</p>
                 </div>
 
-                <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)"></span>
+                <!-- <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.groupEditDropdown && !$ctrl.groupEditing" ng-click="$ctrl.editGroupInfo(group.id)"></span> -->
+                <span class="glyphicon glyphicon-plus bottom-right" aria-hidden="true" ng-if="!$ctrl.groupEditDropdown && !$ctrl.groupEditing" ng-click="$ctrl.editGroupInfo(group.id)"></span>
             </div>
             <!-- Dropdown checkboxes -->
             <div class="row padding" ng-show="$ctrl.groupEdit[group.id]">
@@ -73,7 +74,7 @@
                     <div class="col-xs-6 col-sm-3">
                         <div class="checkbox">
                             <label ng-if="$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label>
-                            <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label>
+                            <!-- <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label> -->
                         </div>
                         <!-- <div class="input-group">
                         <span class="input-group-addon"><input type="checkbox" aria-label="...">Test</span>
