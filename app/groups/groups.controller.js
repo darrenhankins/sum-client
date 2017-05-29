@@ -43,28 +43,13 @@
               $scope.addGroupForm.$setPristine();
             }
 
-            // vm.temporyArrFn = function (){
-            //
-            //   // vm.temporyArray = vm.groups[0].friends;
-            //   vm.temporyArray = vm.groups;
-            //   console.log(vm.temporyArray);
-            //   // let friends = vm.groups[0].friends;
-            //   // console.log(friends);
-            //   // for(let i=0;i<friends.length; i++) {
-            //   //   if (friends[i].checked) {
-            //   //     vm.temporyArray.push(friends[i].id);
-            //   //     console.log(vm.temporyArray);
-            //   //   }
-            //   // }
-            // }
-
             vm.check = function (id) {
               // let id1 = id-1;
-              console.log(id);
-              vm.groups[0].friends[id-1].checked = true;
+              console.log("FRIEND ID:"+id);
+              // vm.groups[0].friends[id-1].checked = true;
               // vm.toDatabase.push(id);
-              console.log("CHECK");
-              console.log(vm.groups[0].friends[id-1]);
+              // console.log("CHECK");
+              // console.log(vm.groups[0].friends[id-1]);
             }
 
             vm.unCheck = function (id) {
@@ -135,63 +120,88 @@
             }
 
              vm.getGroups = function() {
-               vm.groupTemp = {};
                $http.get(`${API_URL}/user/${$stateParams.user_id}/groups`)
                .then(function (response) {
-                   vm.groups = response.data[0];
+                   // response.data[0]; // groups
+                   // response.data[1]; // all friends
+                   vm.groups = [];
+                   for(let x=0; x<response.data[0].length; x++){ // groups
+                     vm.groups[x] = {};
+                     vm.groups[x]['name'] = response.data[0][x].name;
+                     vm.groups[x]['id'] = response.data[0][x].id;
+                     vm.groups[x]['user_id'] = response.data[0][x].user_id;
+                     vm.groups[x].friends = [];
+                     for(let v=0; v<response.data[1].length; v++){ // all friends
+                       vm.groups[x].friends[v] = {};
+                       vm.groups[x].friends[v].id = response.data[1][v].id;
+                       vm.groups[x].friends[v].name = response.data[1][v].name;
+                       vm.groups[x].friends[v].user_id = response.data[1][v].user_id;
+                       vm.groups[x].friends[v].email = response.data[1][v].email;
+                       vm.groups[x].friends[v].checked = false;
+                    }
+                  }
+                  // set items in each group to checked
+                  // for(let x=0; x<response.data[0].length; x++){ // groups
+                  //   for(let v=0; v<response.data[1].length; v++){ // all friends
+                  //      if (response.data[0][x].friend[v]){
+                  //        console.log("RESPONSE...",response.data[0][x].friend[v]);
+                  //       //  console.log("GROUPS...", vm.groups[x]);
+                  //        console.log("ID...", response.data[0][x].friend[v].id);
+                  //       //  console.log("Name...", vm.groups[x].friends[response.data[0][x].friend[v].id-1].name);
+                  //        console.log("TEST...", vm.groups[x].friends[response.data[0][x].friend[v].id-1]);
+                  //         // vm.groups[x].friends[response.data[0][x].friend[v].id-1].checked = true;
+                  //      }
+                  //    }
+                  //  }
 
-                   // sort function for groups
+                  // these items exist => from database
+                  // console.log("GROUP-length...", response.data[0].length);
+                  // console.log("GROUP-id...", response.data[0][x].id);
+                  // console.log("FRIENDs-length...", response.data[0][x].friend.length);
+                  // console.log("FRIENDS-id...", response.data[0][x].friend[v].id);
+                  // turn the "checked to true" on these base on id
+                  // console.log("ALL GROUPS-Mine-length...", vm.groups.length);
+                  // console.log("ALL GROUPS-Mine-id...", vm.groups[y].id);
+                  // console.log("ALL FRIENDs-mine-length...", vm.groups[y].friends.length);
+                  // console.log("ALL FRIENDs-mine-id...", vm.groups[y].friends[z].id);
+
+
+                   for(let x=0; x<response.data[0].length; x++){ // groups
+                   // response.data[0][x].id
+                     for(let v=0; v<response.data[0][x].friend.length; v++){ // all friends
+                     // response.data[0][x].friend[v].id
+                       for(let y=0; y<vm.groups.length; y++){ // groups
+                       if (vm.groups[y].id == response.data[0][x].id) {
+                         for(let z=0; z<vm.groups[y].friends.length; z++){ // friends
+                         if (vm.groups[y].friends[z].id == response.data[0][x].friend[v].id) {
+                        //  if (response.data[0][x].friend[v]){
+                            // console.log("RESPONSE...",response.data[0][x].friend[v]);
+                            // console.log("GROUP...", response.data[0][x].id);
+                            // console.log("ID...", response.data[0][x].friend[v].id);
+                           //  console.log("Name...", vm.groups[x].friends[response.data[0][x].friend[v].id-1].name);
+                            // console.log("TEST...", vm.groups[x].friends[response.data[0][x].friend[v].id-1]);
+                             vm.groups[y].friends[z].checked = true;
+                          // }
+                        }
+                        }
+                      }
+                      }
+                     }
+                    }
+
+                   console.log(vm.groups);
+
+                  // sort function for groups
                    vm.groups.sort(function(s1, s2) {
                        var l = s1.name.toLowerCase(),
                            m = s2.name.toLowerCase();
                        return l === m ? 0 : l > m ? 1 : -1;
                    });
-
-                   vm.friends = response.data[1];
-                  //  vm.oneFriends = response.data[1][1].name;
-                  console.log("All Friends, Total Number:", vm.friends.length);
-                   console.log("All Friends:", vm.friends);
-
-                  //  vm.allGroups = response.data[0];
-                  //  console.log("All Groups:", vm.allGroups);
-                   //
-                  //  vm.groupName = response.data[0][1].name;
-                  //  console.log("Group Name:", vm.groupName);
-
-                   vm.friendsInGroup = response.data[0][0].friend;
-                   console.log("Friends In Group 0, Total Number:", vm.friendsInGroup.length);
-                   console.log("Friends In Group 0:", vm.friendsInGroup);
-                   // console.log("currentFriendsInGroup", vm.currentFriendsInGroup[1].friend[0]);
-
-                   vm.tempGroup1 = [{
-                     "friend0": [{
-                       "id": 1,
-                       "name": "Darren",
-                       "checked": false
-                     }],
-                     "friend1": [{
-                       "id": 2,
-                       "name": "Paul",
-                       "checked": true
-                     }],
-                     "friend2": [{
-                       "id": 3,
-                       "name": "Jesse",
-                       "checked": true
-                     }]
-                   }];
-
-                  //  vm.groups = [{
-                  //    "id": 1,
-                  //    "name": "Family",
-                  //    "friends": [{
-                  //        "id": 1,
-                  //        "name": "Jim",
-                  //        "checked": true
-                  //    }]
-                  //  }];
-
                });
+             }
+
+             vm.friendChecked = function (group_id, friend_id){
+               console.log("GROUP-FriendCHecked: "+group_id+","+friend_id);
              }
 
              vm.newGroup = function() {
@@ -247,7 +257,7 @@
              }
 
             }
-          }
+           }
 
          function getHostUrl() {
              if (window.location.host.indexOf('localhost') != -1) {

@@ -69,11 +69,15 @@
             <!-- Dropdown checkboxes -->
             <div class="row padding" ng-show="$ctrl.groupEdit[group.id]">
                 <!-- <div ng-repeat="friend in group.friend"> -->
-                <div ng-repeat="friend in $ctrl.friends">
-
+                <div ng-repeat="friend in group.friends">
                     <div class="col-xs-6 col-sm-3">
                         <div class="checkbox">
-                            <label ng-if="$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label>
+                          <label ng-if="friend.checked==true"><input type="checkbox" name="friend" value="{{ friend.id }}" ng-click="$ctrl.friendChecked(group.id, friend.id)" checked>{{ friend.name }}</label>
+                          <label ng-if="!friend.checked==true"><input type="checkbox" name="friend" value="{{ friend.id }}" ng-click="$ctrl.friendChecked(group.id, friend.id)">{{ friend.name }}</label>
+
+                          <!-- <label ng-if="!$ctrl.friendChecked(friend.id, group.id)" ng-change="$ctrl.check(friend.id)"><input type="checkbox" name="friend" value="{{ friend.id }}">{{ friend.name }}</label> -->
+
+                            <!-- <label ng-if="$ctrl.groupEdit[group.id]"><input type="checkbox" name="friend" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label> -->
                             <!-- <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label> -->
                         </div>
                         <!-- <div class="input-group">
