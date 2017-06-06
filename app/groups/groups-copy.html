@@ -70,7 +70,7 @@
             <div class="row padding" ng-show="$ctrl.groupEdit[group.id]">
                 <!-- <div ng-repeat="friend in group.friend"> -->
                 <div ng-repeat="friend in group.friends">
-                    <div class="col-xs-12 col-sm-4">
+                    <div class="col-xs-6 col-sm-3">
                         <div class="checkbox">
                           <label ng-if="friend.checked==true"><input type="checkbox" name="friend" value="{{ friend.id }}" ng-click="$ctrl.friendChecked(group.id, friend.id)" checked>{{ friend.name }}</label>
                           <label ng-if="!friend.checked==true"><input type="checkbox" name="friend" value="{{ friend.id }}" ng-click="$ctrl.friendChecked(group.id, friend.id)">{{ friend.name }}</label>

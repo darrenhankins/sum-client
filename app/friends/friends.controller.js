@@ -22,6 +22,8 @@
           } else {
             vm.user_id = $stateParams.user_id;
             vm.getFriends();
+            // vm.getGroups();
+
           }
             //   vm.friends = [{
             //     "id": 1,
@@ -46,6 +48,8 @@
             // ];
 
         };
+
+
         if ($stateParams.user_id == null){
           $location.url('/login');
         } else {
@@ -99,17 +103,61 @@
               }
           }
 
+          vm.groupChecked = function (friend_id, group_id){
+            console.log("FRIEND-GroupChecked: "+friend_id+","+group_id);
+          }
 
 
           vm.getFriends = function() {
               $http.get(`${API_URL}/user/${$stateParams.user_id}/friends`)
                   .then(function(response) {
-                      console.log(response.data);
+                      // response.data[0]; // all friends
+                      // response.data[1]; // all groups
 
-                      // var objs = response.data;
-                      // vm.friends = objs.sort(vm.compare);
-                      // console.log(vm.friends);
-                      vm.friends = response.data;
+                      // sort the groups
+                      vm.groups = response.data[1];
+                      vm.groups.sort(function(s1, s2) {
+                          var l = s1.name.toLowerCase(),
+                              m = s2.name.toLowerCase();
+                          return l === m ? 0 : l > m ? 1 : -1;
+                      });
+                      // this creates an array of all the user's friends
+                      // with an array  of all the users friends
+                      // making them all initially unchecked in that group array
+                      vm.friends = [];
+                      for(let x=0; x<response.data[0].length; x++){ // friends
+                        vm.friends[x] = {};
+                        vm.friends[x]['name'] = response.data[0][x].name;
+                        vm.friends[x]['email'] = response.data[0][x].email;
+                        vm.friends[x]['id'] = response.data[0][x].id;
+                        vm.friends[x]['user_id'] = response.data[0][x].user_id;
+                        vm.friends[x].groups = [];
+                        // vm.groups => response.data[1]
+                        for(let v=0; v<vm.groups.length; v++){ // all friends
+                          vm.friends[x].groups[v] = {};
+                          vm.friends[x].groups[v].id = vm.groups[v].id;
+                          vm.friends[x].groups[v].name = vm.groups[v].name;
+                          vm.friends[x].groups[v].user_id = vm.groups[v].user_id;
+                          vm.friends[x].groups[v].checked = false;
+                       }
+                      }
+
+                      for(let x=0; x<response.data[0].length; x++){ // friends
+                      // response.data[0][x].id
+                        for(let v=0; v<response.data[0][x].group.length; v++){ // all groups
+                        // response.data[0][x].friend[v].id
+                          for(let y=0; y<vm.friends.length; y++){ // groups
+                            if (vm.friends[y].id == response.data[0][x].id) {
+                              for(let z=0; z<vm.friends[y].groups.length; z++){ // friends
+                                if (vm.friends[y].groups[z].id == response.data[0][x].group[v].id) {
+                                    vm.friends[y].groups[z].checked = true;
+                                }
+                             }
+                            }
+                          }
+                        }
+                      }
+                     // sort friends in order
                       vm.friends.sort(function(s1, s2) {
                           var l = s1.name.toLowerCase(),
                               m = s2.name.toLowerCase();
@@ -117,6 +165,8 @@
                       });
                   });
           }
+
+
 
           vm.addFriend = function() {
             console.log("Add Friend");

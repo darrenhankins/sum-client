@@ -17,6 +17,8 @@
 
 ```
 
+/user/${$stateParams.user_id}/groups
+
 ```
 
 ### Form Validation
@@ -25,3 +27,4 @@
 
 #### Testing
 - `$ lite-server`
+Ò
