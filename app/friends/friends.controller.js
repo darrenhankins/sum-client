@@ -12,41 +12,24 @@
         const vm = this;
 
         vm.$onInit = function() {
-
           vm.data = {};
           vm.data.name = '';
           vm.data.email = '';
+          vm.tempFriendData = {};
+
 
           if ($stateParams.user_id == null){
             $location.url('/login');
           } else {
             vm.user_id = $stateParams.user_id;
             vm.getFriends();
-            // vm.getGroups();
-
           }
             //   vm.friends = [{
             //     "id": 1,
             //     "name": "Paul Kowalkski",
             //     "email": "paul@gmail.com"
-            //   },
-            //   {
-            //     "id": 2,
-            //     "name": "Jeff",
-            //     "email": "jeff@gmail.com"
-            //   },
-            //   {
-            //     "id": 3,
-            //     "name": "Jim",
-            //     "email": "jim@gmail.com"
-            //   },
-            //   {
-            //     "id": 4,
-            //     "name": "George",
-            //     "email": "george@gmail.com"
             //   }
             // ];
-
         };
 
 
@@ -103,11 +86,6 @@
               }
           }
 
-          vm.groupChecked = function (friend_id, group_id){
-            console.log("FRIEND-GroupChecked: "+friend_id+","+group_id);
-          }
-
-
           vm.getFriends = function() {
               $http.get(`${API_URL}/user/${$stateParams.user_id}/friends`)
                   .then(function(response) {
@@ -132,12 +110,12 @@
                         vm.friends[x]['id'] = response.data[0][x].id;
                         vm.friends[x]['user_id'] = response.data[0][x].user_id;
                         vm.friends[x].groups = [];
-                        // vm.groups => response.data[1]
                         for(let v=0; v<vm.groups.length; v++){ // all friends
                           vm.friends[x].groups[v] = {};
                           vm.friends[x].groups[v].id = vm.groups[v].id;
                           vm.friends[x].groups[v].name = vm.groups[v].name;
                           vm.friends[x].groups[v].user_id = vm.groups[v].user_id;
+                          vm.friends[x].groups[v].email = vm.groups[v].email;
                           vm.friends[x].groups[v].checked = false;
                        }
                       }
@@ -166,7 +144,45 @@
                   });
           }
 
+          vm.groupChecked = function (friend_id, group_id){
+            console.log("FRIEND-GroupChecked: "+friend_id+","+group_id);
+            for(let x=0; x<vm.friends.length; x++) {
+              if (vm.friends[x].id == friend_id) {
+                for(let y=0; y<vm.friends[x].groups.length; y++){
+                  if (vm.friends[x].groups[y].id == group_id){
+                    if (vm.friends[x].groups[y].checked == false) {
+                      vm.friends[x].groups[y].checked = true;
+                      console.log("CHECKED !!!");
+                    } else {
+                      vm.friends[x].groups[y].checked = false;
+                      console.log("UNCHECKED !!!");
+                    }
+                  }
+                }
+              }
+            }
+            console.log("Groups: => ",vm.friends);
+          }
 
+          // vm.groupChecked = function (friend_id, group_id){
+          //   console.log("GROUP-FriendCHecked: "+group_id+","+friend_id);
+          //   for(let x=0; x<vm.friends.length; x++) {
+          //     if (vm.groups[x].id == group_id) {
+          //       for(let y=0; y<vm.friends[x].groups.length; y++){
+          //         if (vm.friends[x].groups[y].id == friend_id){
+          //           if (vm.friends[x].groups[y].checked == false) {
+          //             vm.friends[x].groups[y].checked = true;
+          //             console.log("CHECKED !!!");
+          //           } else {
+          //             vm.friends[x].groups[y].checked = false;
+          //             console.log("UNCHECKED !!!");
+          //           }
+          //         }
+          //       }
+          //     }
+          //   }
+          //   console.log("Groups: => ",vm.friends);
+          // }
 
           vm.addFriend = function() {
             console.log("Add Friend");
@@ -200,22 +216,40 @@
             console.log("Deleted Friend");
           }
 
-          vm.updateFriend = function(id) {
-              vm.friendEdit[id] = false;
+
+          vm.updateFriend = function(friend_id) {
+            console.log("Friend Update Index: ", friend_id);
+
+            for (let x=0; x<vm.friends.length; x++) {
+              if (vm.friends[x].id == friend_id) {
+                vm.tempFriendData = vm.friends[x];
+              }
+            }
+
+            console.log("THIS IS THE friendTemp !!!!", vm.friendTemp);
+            console.log("THIS IS THE tempFriendData !!!!", vm.tempFriendData);
+
+              vm.friendEdit[friend_id] = false;
               vm.friendEditDropdown = false;
               vm.friendEditing = false;
-              vm.friend_edit[id].friend_id = id;
-              console.log(vm.friend_edit[id]);
-              $http.patch(`${API_URL}/user/${$stateParams.user_id}/friends/${id}`, vm.friend_edit[id])
-                  .then(function(data) {
-                      console.log(data);
-                      vm.getFriends();
-                      vm.resetForm(id);
-                      vm.friendEditDropdown = false;
-                  }, function() {
-                      console.log('Update Friend Failed!');
-                  });
-              console.log("Updated Friend");
+              // vm.friend_edit[friend_id].friend_id = friend_id;
+              // console.log(vm.friend_edit[id]);
+              // $http.patch(`${API_URL}/user/${$stateParams.user_id}/friends/${id}`, vm.friend_edit[id])
+              $http.post(`${API_URL}/user/${$stateParams.user_id}/friends/${friend_id}`, vm.tempFriendData)
+                .then(function(data) {
+                  console.log(data);
+                  vm.freindEdit[friend_id] = false;
+                  vm.friendEditDropdown = false;
+                  vm.resetForm();
+                  vm.getFriends();
+                  console.log("Updated Friend");
+
+                    // vm.getFriends();
+                    // vm.resetForm(id);
+                    // vm.friendEditDropdown = false;
+                }, function() {
+                    console.log('Update Friend Failed!');
+                });
           }
       }
     }

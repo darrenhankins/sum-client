@@ -109,14 +109,14 @@
                   <form name="updateFriendForm" ng-submit="$ctrl.updateFriend(friend.id)">
                       <div class="form-group" ng-class="{ 'has-error' : updateFriendForm.name.$invalid && !updateFriendForm.name.$pristine }">
                           <!-- <label for="inputName">Name</label> -->
-                          <input type="text" name="name" placeholder="Name" class="form-control" ng-model="$ctrl.friend_edit[friend.id].name" required>
+                          <input type="text" name="name" placeholder="Name" class="form-control" ng-value="friend.name" ng-model="friend.name" required>
                           <!-- <input type="text" name="name" placeholder="Name" class="form-control" id="inputName" aria-describedby="nameHelp"  required> -->
                           <p ng-show="updateFriendForm.name.$invalid && !updateFriendForm.name.$pristine" class="help-block">Name required</p>
                           <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                       </div>
                       <div class="form-group" ng-class="{ 'has-error' : updateFriendForm.email.$invalid && !updateFriendForm.email.$pristine }">
                           <!-- <label for="inputEmail">Email address</label> -->
-                          <input type="email" name="email" placeholder="Email" class="form-control" ng-model="$ctrl.friend_edit[friend.id].email" required>
+                          <input type="email" name="email" placeholder="Email" class="form-control" ng-value="friend.email" ng-model="friend.email" required>
                           <!-- <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email" required> -->
                           <p ng-show="updateFriendForm.email.$invalid && !updateFriendForm.email.$pristine" class="help-block">Enter a valid email</p>
                           <!-- <small id="emailHelp" class="form-text text-muted"></small> -->

@@ -14,7 +14,7 @@
         vm.$onInit = function() {
           vm.data = {};
           vm.data.name = '';
-          vm.tempData = {};
+          vm.tempGroupData = {};
 
           if ($stateParams.user_id == null){
             $location.url('/login');
@@ -141,6 +141,7 @@
                    for(let x=0; x<response.data[0].length; x++){ // groups
                      vm.groups[x] = {};
                      vm.groups[x]['name'] = response.data[0][x].name;
+                     vm.groups[x]['email'] = response.data[0][x].email;
                      vm.groups[x]['id'] = response.data[0][x].id;
                      vm.groups[x]['user_id'] = response.data[0][x].user_id;
                      vm.groups[x].friends = [];
@@ -251,35 +252,36 @@
 
                for (let x=0; x<vm.groups.length; x++) {
                  if (vm.groups[x].id == group_id) {
-                   vm.tempData = vm.groups[x];
+                   vm.tempGroupData = vm.groups[x];
                  }
                }
                // name didn't change
-               if (!vm.groupTemp) {
-                //  vm.groupTemp.name = vm.groups[group_id].name;
-                 vm.tempData.name = vm.groups[group_id].name;
-               } else {
-                 vm.tempData.name = vm.groupTemp.name;
-               }
+              //  if (!vm.groupTemp) {
+              //   //  vm.groupTemp.name = vm.groups[group_id].name;
+              //    vm.tempGroupData.name = vm.groups[group_id].name;
+              //  } else {
+              //    vm.tempGroupData.name = vm.groupTemp.name;
+              //  }
 
                console.log("THIS IS THE groupTemp !!!!", vm.groupTemp);
-               console.log("THIS IS THE tempData !!!!", vm.tempData);
+               console.log("THIS IS THE tempGroupData !!!!", vm.tempGroupData);
               //  var id = vm.groups[group_id].id;
                vm.groupEdit[group_id] = false;
                vm.groupEditDropdown = false;
                vm.groupEditing = false;
-              //  $http.patch(`${API_URL}/user/${$stateParams.user_id}/groups/${group_id}`, vm.tempData)
-               $http.post(`${API_URL}/user/${$stateParams.user_id}/groups/${group_id}`, vm.tempData)
+              //  $http.patch(`${API_URL}/user/${$stateParams.user_id}/groups/${group_id}`, vm.tempGroupData)
+               $http.post(`${API_URL}/user/${$stateParams.user_id}/groups/${group_id}`, vm.tempGroupData)
                  .then(function(data) {
                      console.log(data);
                      vm.groupEdit[group_id] = false;
                      vm.groupEditDropdown = false;
                      vm.resetForm();
                      vm.getGroups();
+                     console.log("Updated Group");
+
                  }, function() {
                      console.log('Update Group Failed!');
                  });
-                 console.log("Updated Group");
              }
 
              vm.deleteGroup = function(id) {

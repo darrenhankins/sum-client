@@ -59,7 +59,7 @@
               <!-- group name -->
                 <span ng-if="!$ctrl.groupEdit[group.id]">{{ group.name }}</span>
                 <div class="form-group" ng-if="$ctrl.groupEdit[group.id]" ng-class="{ 'has-error' : updateGroupForm.name.$invalid && !updateGroupForm.name.$pristine }">
-                    <input type="text" name="name" class="form-control" ng-value="group.name" ng-model="$ctrl.groupTemp.name" required>
+                    <input type="text" name="name" class="form-control" ng-value="group.name" ng-model="group.name" required>
                     <p ng-show="updateGroupForm.name.$invalid && !updateGroupForm.name.$pristine" class="help-block">Name required</p>
                 </div>
 
