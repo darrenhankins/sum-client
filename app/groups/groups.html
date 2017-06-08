@@ -52,7 +52,7 @@
 
 
 <div ng-repeat="group in $ctrl.groups">
-  <form id="updateGroupForm" name="updateGroupForm" ng-submit="$ctrl.updateGroup($index)">
+  <form id="updateGroupForm" name="updateGroupForm" ng-submit="$ctrl.updateGroup(group.id)">
     <div class="panel panel-default">
         <div class="panel-body">
             <div>
@@ -117,7 +117,9 @@
             <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.deleteGroup(group.id); " class="btn btn-danger left" role="button">Delete</a>
             <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id); " class="btn btn-warning right" role="button">Cancel</a>
             <!-- <a href="#" ng-if="$ctrl.groupEdit[group.id]" ng-click="$ctrl.editGroupInfo(group.id)" class="btn btn-success right" role="button">Save</a> -->
-            <button type="submit" class="btn btn-success bottom-right" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="$ctrl.groupEdit[group.id]" ng-disabled="updateGroupForm.$invalid">Submit</button>
+            <!-- <button type="submit" class="btn btn-success bottom-right" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="$ctrl.groupEdit[group.id]" ng-disabled="updateGroupForm.$invalid">Submit</button> -->
+            <button type="submit" class="btn btn-success bottom-right" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="$ctrl.groupEdit[group.id]">Submit</button>
+
 
             <!-- /.row -->
             <!-- Dropdown checkboxes -->

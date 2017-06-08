@@ -14,6 +14,7 @@
         vm.$onInit = function() {
           vm.data = {};
           vm.data.name = '';
+          vm.tempData = {};
 
           if ($stateParams.user_id == null){
             $location.url('/login');
@@ -212,6 +213,22 @@
 
              vm.friendChecked = function (group_id, friend_id){
                console.log("GROUP-FriendCHecked: "+group_id+","+friend_id);
+               for(let x=0; x<vm.groups.length; x++) {
+                 if (vm.groups[x].id == group_id) {
+                   for(let y=0; y<vm.groups[x].friends.length; y++){
+                     if (vm.groups[x].friends[y].id == friend_id){
+                       if (vm.groups[x].friends[y].checked == false) {
+                         vm.groups[x].friends[y].checked = true;
+                         console.log("CHECKED !!!");
+                       } else {
+                         vm.groups[x].friends[y].checked = false;
+                         console.log("UNCHECKED !!!");
+                       }
+                     }
+                   }
+                 }
+               }
+               console.log("Groups: => ",vm.groups);
              }
 
              vm.newGroup = function() {
@@ -229,20 +246,33 @@
                console.log('Group Created');
              }
 
-             vm.updateGroup = function(index) {
-               console.log("Group Update Index: ", index);
-               // name didn't change
-               if (!vm.groupTemp.name) {
-                 vm.groupTemp.name = vm.groups[index].name;
+             vm.updateGroup = function(group_id) {
+               console.log("Group Update Index: ", group_id);
+
+               for (let x=0; x<vm.groups.length; x++) {
+                 if (vm.groups[x].id == group_id) {
+                   vm.tempData = vm.groups[x];
+                 }
                }
-               var id = vm.groups[index].id;
-               vm.groupEdit[id] = false;
+               // name didn't change
+               if (!vm.groupTemp) {
+                //  vm.groupTemp.name = vm.groups[group_id].name;
+                 vm.tempData.name = vm.groups[group_id].name;
+               } else {
+                 vm.tempData.name = vm.groupTemp.name;
+               }
+
+               console.log("THIS IS THE groupTemp !!!!", vm.groupTemp);
+               console.log("THIS IS THE tempData !!!!", vm.tempData);
+              //  var id = vm.groups[group_id].id;
+               vm.groupEdit[group_id] = false;
                vm.groupEditDropdown = false;
                vm.groupEditing = false;
-               $http.patch(`${API_URL}/user/${$stateParams.user_id}/groups/${id}`, vm.groupTemp)
+              //  $http.patch(`${API_URL}/user/${$stateParams.user_id}/groups/${group_id}`, vm.tempData)
+               $http.post(`${API_URL}/user/${$stateParams.user_id}/groups/${group_id}`, vm.tempData)
                  .then(function(data) {
                      console.log(data);
-                     vm.groupEdit[id] = false;
+                     vm.groupEdit[group_id] = false;
                      vm.groupEditDropdown = false;
                      vm.resetForm();
                      vm.getGroups();
