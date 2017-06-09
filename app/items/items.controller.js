@@ -103,11 +103,13 @@
                 vm.itemId = id;
             }
 
-            vm.setItemEditId = function(id) {
-                console.log("Item Edit ID:", id);
-                vm.itemEditId = id;
+            vm.editItem = function(item_id) {
+                console.log("Item Edit ID:", item_id);
+                $state.go(`edit`, {
+                  user_id: vm.user_id,
+                  item_id: item_id
+                });
             }
-            // https://sum-app.herokuapp.com/user/1/items
         }
     }
 

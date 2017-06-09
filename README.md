@@ -17,7 +17,11 @@
 
 ```
 
+/user/${$stateParams.user_id}/items
+/user/${$stateParams.user_id}/items/${$stateParams.item_id}
 /user/${$stateParams.user_id}/groups
+/user/${$stateParams.user_id}/friends
+
 
 ```
 

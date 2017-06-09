@@ -77,7 +77,10 @@
                   <!-- <p>{{ group.name }}</p> -->
                 </div>
 
-                <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.setItemEditId($index)">Edit</a>
+                <!-- <p><a href="#" class="btn btn-primary" role="button" ng-click="$ctrl.setItemEditId($index)">Edit</a> -->
+                <a ui-sref="edit({ user_id: $ctrl.user_id })" class="btn btn-primary" role="button" ng-click="$ctrl.editItem(item.id)">Edit</a>
+
+                <!-- <p><a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.setItemEditId($index)">Edit</a> -->
                     <!-- <a href="#" class="btn btn-primary-emailed" role="button" ng-if="item.group.length == 0 && item.available" disabled>No Groups</a> -->
                     <a href="#" class="btn btn-primary-emailed" role="button" ng-if="!item.available" disabled>Claimed</a>
                     <a href="#" class="btn btn-primary-unemailed" role="button" data-toggle="modal" data-target="#pleaseWaitDialog" ng-if="item.available && !item.emailed" ng-click="$ctrl.sendEmail(item.id)">Send Email</a>
