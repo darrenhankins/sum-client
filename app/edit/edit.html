@@ -24,6 +24,14 @@
     </div>
 </nav>
 <main class="container">
+  <div class="col-sm-12 panel-body-groups">
+      <h2>Edit Item</h2>
+      <!-- <div class="add-item-button"> -->
+      <!-- <a ui-sref="add({ user_id: $ctrl.user_id })" class="btn btn-primary-unemailed" role="button" ng-click="$ctrl.setItemId(item.id)">Add Item</a> -->
+      <!-- <a href="/profile/{{ $ctrl.user_id }}/add" class="btn btn-primary-unemailed" role="button" ng-click="$ctrl.setItemId(item.id)">Add Item</a> -->
+    </div>
+
+  </div>
     <!-- <div class="row">
         <div class="col-sm-3 box">
             <img src="{{ item.image_url }}" width="150px" height="150px">
@@ -56,7 +64,7 @@
                     <div class="thumbnail">
                         <img src="{{ $ctrl.item.image_url }}" alt="..." height="150px">
                         <div class="caption">
-                          <form name="updateItemForm" id="updateItemForm" ng-submit="$ctrl.updateItem($ctrl.itemEditId)">
+                          <form name="updateItemForm" id="updateItemForm" ng-submit="$ctrl.updateItem($ctrl.item.id)">
                             <div class="form-group">
                               <label for="InputName">Name</label>
                               <input type="text" class="form-control" id="InputName" aria-describedby="nameHelp" ng-value="$ctrl.item.name" ng-model="$ctrl.item.name" required>
@@ -94,9 +102,10 @@
                                   </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-danger bottom-left" role="button" ng-click="$ctrl.deleteItem($ctrl.itemEditId)">Delete</a>
+                            <a href="#" class="btn btn-danger bottom-left" role="button" ng-click="$ctrl.deleteItem($ctrl.item.id)">Delete</a>
                             <a href="#" class="btn btn-warning bottom-right" role="button" ng-click="$ctrl.cancelEdit()">Cancel</a>
-                            <button type="submit" class="btn btn-success bottom-right" data-dismiss="modal">Submit</button>
+                            <!-- <button type="submit" class="btn btn-success bottom-right" data-dismiss="modal">Submit</button> -->
+                            <button type="submit" class="btn btn-success bottom-right">Submit</button>
                           </form>
                         </div>
                     </div>

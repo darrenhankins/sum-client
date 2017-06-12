@@ -79,24 +79,24 @@
                     });
             }
 
-            vm.updateItem = function(id) {
-              console.log("Update Item:", id);
-            }
+            // vm.updateItem = function(id) {
+            //   console.log("Update Item:", id);
+            // }
+            //
+            // vm.deleteItem = function(id) {
+            //   console.log("Deleted Item:", id);
+            // }
 
-            vm.deleteItem = function(id) {
-              console.log("Deleted Item:", id);
-            }
-
-            vm.itemEdit = [];
-            vm.editItemInfo = function(id) {
-                if (vm.itemEdit[id] == false || !vm.itemEdit[id]) {
-                    console.log(vm.itemEdit[id]);
-                    vm.itemEdit[id] = true;
-                } else {
-                    console.log(vm.itemEdit[id]);
-                    vm.itemEdit[id] = false;
-                }
-            }
+            // vm.itemEdit = [];
+            // vm.editItemInfo = function(id) {
+            //     if (vm.itemEdit[id] == false || !vm.itemEdit[id]) {
+            //         console.log(vm.itemEdit[id]);
+            //         vm.itemEdit[id] = true;
+            //     } else {
+            //         console.log(vm.itemEdit[id]);
+            //         vm.itemEdit[id] = false;
+            //     }
+            // }
 
             vm.setItemId = function(id) {
                 console.log("Item ID:", id);

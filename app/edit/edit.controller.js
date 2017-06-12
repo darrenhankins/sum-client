@@ -49,11 +49,29 @@
                   console.log(vm.groups);
               });
 
-            vm.updateItem = function(id) {
-              console.log("Update Item:", id);
+            vm.updateItem = function(item_id) {
+              console.log("Update Item:", item_id);
+              $http.patch(`${API_URL}/user/${$stateParams.user_id}/items/${item_id}`, vm.item)
+                .then(function(data) {
+                  console.log(data);
+                  $state.go(`items`, {
+                    user_id: $stateParams.user_id
+                  });
+                }, function() {
+                  console.log('UpdatedItem');
+                });
             }
 
             vm.deleteItem = function(id) {
+              $http.delete(`${API_URL}/user/${$stateParams.user_id}/items/${id}`)
+                  .then(function(data) {
+                      console.log(data);
+                      $state.go(`items`, {
+                        user_id: $stateParams.user_id
+                      });
+                  }, function() {
+                      console.log('Delete Group Failed!');
+                  });
               console.log("Deleted Item:", id);
             }
 
@@ -63,16 +81,16 @@
               });
             }
 
-            vm.itemEdit = [];
-            vm.editItemInfo = function(id) {
-                if (vm.itemEdit[id] == false || !vm.itemEdit[id]) {
-                    console.log(vm.itemEdit[id]);
-                    vm.itemEdit[id] = true;
-                } else {
-                    console.log(vm.itemEdit[id]);
-                    vm.itemEdit[id] = false;
-                }
-            }
+            // vm.itemEdit = [];
+            // vm.editItemInfo = function(id) {
+            //     if (vm.itemEdit[id] == false || !vm.itemEdit[id]) {
+            //         console.log(vm.itemEdit[id]);
+            //         vm.itemEdit[id] = true;
+            //     } else {
+            //         console.log(vm.itemEdit[id]);
+            //         vm.itemEdit[id] = false;
+            //     }
+            // }
         }
     }
 
