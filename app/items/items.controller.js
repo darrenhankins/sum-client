@@ -40,7 +40,7 @@
         if ($stateParams.user_id == null) {
             $location.url('/login');
         } else {
-            // get all item
+            // get all items, item_status, item_sell
             $http.get(`${API_URL}/user/${$stateParams.user_id}/items`)
               .then(function(response) {
                   vm.items = response.data;
@@ -51,7 +51,15 @@
                   //   vm.groups = response.data;
                   //   console.log(response.data);
                   // });
+                  // sort friends in order
+                  vm.items.sort(function(s1, s2) {
+                      var l = s1.name.toLowerCase(),
+                          m = s2.name.toLowerCase();
+                      return l === m ? 0 : l > m ? 1 : -1;
+                  });
               });
+
+
 
             // get one item
             // $http.get('http://localhost:3000/user/1/items/1/')

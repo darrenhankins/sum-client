@@ -91,14 +91,14 @@
                               <small id="pricelHelp" class="form-text text-muted"></small>
                             </div>
                             <hr> -->
-                            <label for="InputImageUrl">Groups</label>
+                            <label for="InputImageUrl">Groups assigned to this Item</label>
                             <div class="row padding">
-                                <div ng-repeat="group in $ctrl.groups">
-                                  <div class="col-xs-6 col-sm-3">
+                                <div ng-repeat="group in $ctrl.checkedGroups">
+                                  <div class="col-xs-12 col-sm-6 col-md-4">
                                       <div class="checkbox">
-                                          <label ng-if="$ctrl.groupEdit[group.id]" ><input type="checkbox" ng-model="$ctrl.data.group[group.id]"  checked>{{ group.name }}</label>
-                                          <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" ng-model="$ctrl.data.group[group.id]" >{{ group.name }}</label>
-                                      </div>
+                                        <label ng-if="group.checked==true"><input type="checkbox" name="group" value="{{ group.id }}" ng-click="$ctrl.groupChecked(group.id)" checked>{{ group.name }}</label>
+                                        <label ng-if="!group.checked==true"><input type="checkbox" name="group" value="{{ group.id }}" ng-click="$ctrl.groupChecked(group.id)">{{ group.name }}</label>
+                                        </div>
                                   </div>
                                 </div>
                             </div>

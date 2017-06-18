@@ -74,7 +74,7 @@
                     console.log("Friend Edit ID:", vm.friendEdit[id]);
                     vm.friendEdit[id] = false;
                     vm.friendEditing = false;
-                    vm.setCheckedFriends(vm.allGroups);
+                    vm.setCheckedGroups(vm.allGroups);
                 }
             }
 
@@ -101,7 +101,7 @@
                                 m = s2.name.toLowerCase();
                             return l === m ? 0 : l > m ? 1 : -1;
                         });
-                        vm.setCheckedFriends(vm.allGroups);
+                        vm.setCheckedGroups(vm.allGroups);
 
                         //   // this creates an array of all the user's friends
                         //   // with an array  of all the users friends
@@ -148,7 +148,7 @@
                     });
             }
 
-            vm.setCheckedFriends = function(allGroups) {
+            vm.setCheckedGroups = function(allGroups) {
                 // this creates an array of all the user's friends
                 // with an array  of all the users friends
                 // making them all initially unchecked in that group array
@@ -156,7 +156,7 @@
                 for (let x = 0; x < allGroups.length; x++) { // friends
                     vm.friends[x] = {};
                     vm.friends[x]['name'] = allGroups[x].name;
-                    vm.friends[x]['email'] = allGroups[x].email;
+                    // vm.friends[x]['email'] = allGroups[x].email;
                     vm.friends[x]['id'] = allGroups[x].id;
                     vm.friends[x]['user_id'] = allGroups[x].user_id;
                     vm.friends[x].groups = [];
