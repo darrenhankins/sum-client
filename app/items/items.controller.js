@@ -40,7 +40,7 @@
         if ($stateParams.user_id == null) {
             $location.url('/login');
         } else {
-            // get all item
+            // get all items, item_status, item_sell
             $http.get(`${API_URL}/user/${$stateParams.user_id}/items`)
               .then(function(response) {
                   vm.items = response.data;
@@ -51,7 +51,15 @@
                   //   vm.groups = response.data;
                   //   console.log(response.data);
                   // });
+                  // sort friends in order
+                  vm.items.sort(function(s1, s2) {
+                      var l = s1.name.toLowerCase(),
+                          m = s2.name.toLowerCase();
+                      return l === m ? 0 : l > m ? 1 : -1;
+                  });
               });
+
+
 
             // get one item
             // $http.get('http://localhost:3000/user/1/items/1/')
@@ -79,35 +87,37 @@
                     });
             }
 
-            vm.updateItem = function(id) {
-              console.log("Update Item:", id);
-            }
+            // vm.updateItem = function(id) {
+            //   console.log("Update Item:", id);
+            // }
+            //
+            // vm.deleteItem = function(id) {
+            //   console.log("Deleted Item:", id);
+            // }
 
-            vm.deleteItem = function(id) {
-              console.log("Deleted Item:", id);
-            }
-
-            vm.itemEdit = [];
-            vm.editItemInfo = function(id) {
-                if (vm.itemEdit[id] == false || !vm.itemEdit[id]) {
-                    console.log(vm.itemEdit[id]);
-                    vm.itemEdit[id] = true;
-                } else {
-                    console.log(vm.itemEdit[id]);
-                    vm.itemEdit[id] = false;
-                }
-            }
+            // vm.itemEdit = [];
+            // vm.editItemInfo = function(id) {
+            //     if (vm.itemEdit[id] == false || !vm.itemEdit[id]) {
+            //         console.log(vm.itemEdit[id]);
+            //         vm.itemEdit[id] = true;
+            //     } else {
+            //         console.log(vm.itemEdit[id]);
+            //         vm.itemEdit[id] = false;
+            //     }
+            // }
 
             vm.setItemId = function(id) {
                 console.log("Item ID:", id);
                 vm.itemId = id;
             }
 
-            vm.setItemEditId = function(id) {
-                console.log("Item Edit ID:", id);
-                vm.itemEditId = id;
+            vm.editItem = function(item_id) {
+                console.log("Item Edit ID:", item_id);
+                $state.go(`edit`, {
+                  user_id: vm.user_id,
+                  item_id: item_id
+                });
             }
-            // https://sum-app.herokuapp.com/user/1/items
         }
     }
 

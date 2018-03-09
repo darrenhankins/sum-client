@@ -45,6 +45,16 @@
         url: '/items'
       })
       .state({
+        name: 'edit',
+        component: 'edit',
+        params: {
+          user_id: null,
+          item_id: null
+        },
+        // url: '/profile/:id/items'
+        url: '/edit'
+      })
+      .state({
         name: 'add',
         component: 'add',
         params: {

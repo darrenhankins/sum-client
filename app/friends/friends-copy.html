@@ -109,64 +109,17 @@
                   <form name="updateFriendForm" ng-submit="$ctrl.updateFriend(friend.id)">
                       <div class="form-group" ng-class="{ 'has-error' : updateFriendForm.name.$invalid && !updateFriendForm.name.$pristine }">
                           <!-- <label for="inputName">Name</label> -->
-                          <input type="text" name="name" placeholder="Name" class="form-control" ng-value="friend.name" ng-model="friend.name" required>
+                          <input type="text" name="name" placeholder="Name" class="form-control" ng-model="$ctrl.friend_edit[friend.id].name" required>
                           <!-- <input type="text" name="name" placeholder="Name" class="form-control" id="inputName" aria-describedby="nameHelp"  required> -->
                           <p ng-show="updateFriendForm.name.$invalid && !updateFriendForm.name.$pristine" class="help-block">Name required</p>
                           <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                       </div>
                       <div class="form-group" ng-class="{ 'has-error' : updateFriendForm.email.$invalid && !updateFriendForm.email.$pristine }">
                           <!-- <label for="inputEmail">Email address</label> -->
-                          <input type="email" name="email" placeholder="Email" class="form-control" ng-value="friend.email" ng-model="friend.email" required>
+                          <input type="email" name="email" placeholder="Email" class="form-control" ng-model="$ctrl.friend_edit[friend.id].email" required>
                           <!-- <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email" required> -->
                           <p ng-show="updateFriendForm.email.$invalid && !updateFriendForm.email.$pristine" class="help-block">Enter a valid email</p>
                           <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
-                      </div>
-                      <!-- Dropdown checkboxes -->
-                      <div class="row padding" ng-show="$ctrl.friendEdit[friend.id]">
-                          <!-- <div ng-repeat="friend in group.friend"> -->
-                          <div ng-repeat="group in friend.groups">
-                              <div class="col-xs-12 col-sm-4">
-                                  <div class="checkbox">
-                                    <label ng-if="group.checked==true"><input type="checkbox" name="group" value="{{ group.id }}" ng-click="$ctrl.groupChecked(friend.id, group.id)" checked>{{ group.name }}</label>
-                                    <label ng-if="!group.checked==true"><input type="checkbox" name="group" value="{{ group.id }}" ng-click="$ctrl.groupChecked(friend.id, group.id)">{{ group.name }}</label>
-
-                                    <!-- <label ng-if="!$ctrl.friendChecked(friend.id, group.id)" ng-change="$ctrl.check(friend.id)"><input type="checkbox" name="friend" value="{{ friend.id }}">{{ friend.name }}</label> -->
-
-                                      <!-- <label ng-if="$ctrl.groupEdit[group.id]"><input type="checkbox" name="friend" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.unCheck(friend.id)" checked>{{ friend.name }}</label> -->
-                                      <!-- <label ng-if="!$ctrl.groupEdit[group.id]"><input type="checkbox" value="{{ friend.id }}" ng-model="friend.checked" ng-change="$ctrl.check(friend.id)">{{ friend.name }}</label> -->
-                                  </div>
-                                  <!-- <div class="input-group">
-                                  <span class="input-group-addon"><input type="checkbox" aria-label="...">Test</span>
-                                  <input type="text" class="form-control" aria-label="...">
-                              </div> -->
-                                  <!-- /input-group -->
-                              </div>
-                          </div>
-                          <!-- <label ng-repeat="(key, value) in $ctrl.names" for="{{key}}">
-                                 {{value}}
-                                 <input type="checkbox"
-                                        ng-model="names[key]"
-                                        ng-value="{{ value }}"
-                                        id="{{ key }}"
-                                        name="{{ key }}">
-                          </label> -->
-                          <div ng-repeat="name in $ctrl.names">
-                            <div ng-repeat="(key, val) in name">
-                              <label for="{{key}}">
-                                {{key}}
-                              <input
-                                type="checkbox"
-                                ng-model="$ctrl.names[key]"
-                                value="{{val}}">
-                               </label>
-                            </div>
-                          </div>
-
-                          <!-- <label ng-repeat="(key,val) in $ctrl.names">
-                            <input type="checkbox" ng-model="$ctrl.names[key]" /> {{key}}
-                          </label> -->
-
-
                       </div>
                       <div class="">
                           <!-- <a href="#" class="btn btn-danger bottom-right" role="button" ng-click="$ctrl.editFriend()">Cancel</a> -->
