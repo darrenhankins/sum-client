@@ -88,9 +88,10 @@
             }
 
             vm.getFriends = function() {
+              console.log("HERE...........");
                 $http.get(`${API_URL}/user/${$stateParams.user_id}/friends`)
                     .then(function(response) {
-                        // response.data[0]; // all friends
+                        console.log("getFriends......",response.data[0]); // all friends
                         // response.data[1]; // all groups
 
                         // sort the groups
@@ -102,6 +103,7 @@
                             return l === m ? 0 : l > m ? 1 : -1;
                         });
                         vm.setCheckedGroups(vm.allGroups);
+
 
                         //   // this creates an array of all the user's friends
                         //   // with an array  of all the users friends
@@ -156,7 +158,7 @@
                 for (let x = 0; x < allGroups.length; x++) { // friends
                     vm.friends[x] = {};
                     vm.friends[x]['name'] = allGroups[x].name;
-                    // vm.friends[x]['email'] = allGroups[x].email;
+                    vm.friends[x]['email'] = allGroups[x].email;
                     vm.friends[x]['id'] = allGroups[x].id;
                     vm.friends[x]['user_id'] = allGroups[x].user_id;
                     vm.friends[x].groups = [];
